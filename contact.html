@@ -166,6 +166,28 @@
             transform: translateY(-2px);
         }
 
+        .form-submit:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .error-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #fef2f2;
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            color: #dc2626;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
         .success-message {
             display: none;
             text-align: center;
@@ -206,7 +228,7 @@
             <p class="contact-subtitle">Have anything in mind? Connect with me here?</p>
         </div>
         
-        <form id="contactForm" action="https://formspree.io/f/xqkrqyvz" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/xaqlpdnz" method="POST">
             <div class="form-group">
                 <label class="form-label" for="name">Name</label>
                 <input type="text" id="name" name="name" class="form-input" required placeholder="Your name">
@@ -229,6 +251,8 @@
             </button>
         </form>
         
+        <div id="errorMessage" class="error-message"></div>
+        
         <div id="successMessage" class="success-message">
             <strong>Thanks for reaching out!</strong><br>
             Your message has been sent. I'll get back to you soon.
@@ -241,6 +265,18 @@
         e.preventDefault();
         
         const form = this;
+        const submitBtn = form.querySelector('.form-submit');
+        const errorDiv = document.getElementById('errorMessage');
+        const successDiv = document.getElementById('successMessage');
+        
+        // Hide previous messages
+        errorDiv.classList.remove('show');
+        successDiv.classList.remove('show');
+        
+        // Disable submit button during submission
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        
         const data = new FormData(form);
         
         fetch(form.action, {
@@ -250,14 +286,31 @@
                 'Accept': 'application/json'
             }
         }).then(response => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `Send Message <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+            
             if (response.ok) {
-                document.getElementById('successMessage').classList.add('show');
+                successDiv.classList.add('show');
                 form.reset();
             } else {
-                alert('Oops! There was a problem submitting your form. Please try again.');
+                let errorText = 'There was a problem submitting your form. ';
+                if (response.status === 403) {
+                    errorText += 'This form may be disabled or has reached its submission limit. Please contact the site owner.';
+                } else if (response.status === 404) {
+                    errorText += 'Form endpoint not found. Please verify the form is configured correctly.';
+                } else if (response.status === 422) {
+                    errorText += 'Please check that all required fields are filled correctly.';
+                } else {
+                    errorText += `Error ${response.status}. Please try again or contact directly via email.`;
+                }
+                errorDiv.textContent = errorText;
+                errorDiv.classList.add('show');
             }
         }).catch(error => {
-            alert('Oops! There was a problem submitting your form. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = `Send Message <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+            errorDiv.textContent = 'Network error. Please check your connection and try again, or contact directly via email.';
+            errorDiv.classList.add('show');
         });
     });
 </script>
