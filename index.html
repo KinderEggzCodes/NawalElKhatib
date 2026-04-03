@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Nawal El Khatib — Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,7 +24,10 @@
 
         body {
             font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(176, 58, 46, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(17, 17, 17, 0.05) 0%, transparent 50%),
+                var(--bg);
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
@@ -84,30 +87,61 @@
         .nav-tab:hover:not(.active) { color: var(--text); }
 
         /* ── SECTIONS ── */
-        .section { display: none; padding-top: 90px; }
+        .section { display: none; padding-top: 20px; }
         .section.active { display: block; }
 
         /* ── HERO ── */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh;
             display: grid;
-            grid-template-columns: 1fr 420px;
-            gap: 80px;
-            align-items: center;
-            padding: 80px 60px 60px;
+            grid-template-columns: 1fr 380px;
+            gap: 60px;
+            align-items: start;
+            padding: 40px 60px 40px;
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 10%; right: 25%;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(192,57,43,0.04) 0%, transparent 70%);
+            top: 0; left: 0;
+            right: 0; bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(176, 58, 46, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(17, 17, 17, 0.05) 0%, transparent 50%);
             pointer-events: none;
+            z-index: 0;
         }
 
-        .hero-left { position: relative; z-index: 1; }
+        /* ── ANIMATED WEB BACKGROUND ── */
+        .web-background {
+            display: none;
+        }
+
+        .web-line {
+            stroke: #b03a2e;
+            stroke-width: 0.5;
+            fill: none;
+            animation: webPulse 4s ease-in-out infinite;
+        }
+
+        .web-line.secondary {
+            stroke: #111111;
+            stroke-width: 0.3;
+            animation-delay: 2s;
+        }
+
+        @keyframes webPulse {
+            0%, 100% { opacity: 0.3; stroke-width: 0.5; }
+            50% { opacity: 0.8; stroke-width: 1; }
+        }
+
+        .hero-left { 
+            position: relative; 
+            z-index: 1;
+            padding-top: 0;
+        }
 
         .hero-badge {
             display: inline-flex;
@@ -143,7 +177,7 @@
             font-weight: 800;
             line-height: 1.0;
             letter-spacing: -0.03em;
-            margin-bottom: 24px;
+            margin-bottom: 16px;
         }
 
         .hero-title .accent { color: #1a1a1a; }
@@ -155,10 +189,15 @@
             line-height: 1.7;
             max-width: 480px;
             font-weight: 300;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
-        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-actions { 
+            display: flex; 
+            gap: 14px; 
+            flex-wrap: wrap; 
+            margin-bottom: 40px;
+        }
 
         .btn-primary {
             padding: 13px 28px;
@@ -687,11 +726,144 @@
             animation: fadeUp 0.5s ease forwards;
         }
 
-        /* ── RESPONSIVE ── */
+        /* ── CONTACT MODAL ── */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--muted);
+            padding: 0;
+            width: 32px; height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: var(--surface2);
+            color: var(--text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background: var(--bg);
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent2);
+            box-shadow: 0 0 0 3px rgba(176, 58, 46, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px 24px;
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .form-submit:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+            to { 
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
         @media (max-width: 900px) {
             nav { padding: 16px 24px; }
-            .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 40px; }
+            .hero { 
+                grid-template-columns: 1fr; 
+                padding: 100px 24px 60px; 
+                gap: 40px;
+                min-height: auto;
+            }
             .hero-right { order: -1; }
+            .hero-left { padding-top: 0; }
             .photo-card { max-height: 300px; }
             .experience, .portfolio-grid, .other-grid { padding: 60px 24px; }
             .footer-section { margin: 0 24px 40px; padding: 36px; grid-template-columns: 1fr; gap: 36px; }
@@ -702,6 +874,22 @@
     </style>
 </head>
 <body>
+
+<!-- ANIMATED WEB BACKGROUND -->
+<svg class="web-background" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <pattern id="webPattern" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+            <path class="web-line" d="M0,0 Q50,50 100,0 T200,0 M0,100 Q50,50 100,100 T200,100 M0,200 Q50,150 100,200 T200,200 M0,0 Q50,50 0,100 T0,200 M100,0 Q50,50 100,100 T100,200 M200,0 Q150,50 200,100 T200,200"/>
+            <path class="web-line secondary" d="M50,0 L50,200 M150,0 L150,200 M0,50 L200,50 M0,150 L200,150"/>
+            <circle class="web-line" cx="50" cy="50" r="2"/>
+            <circle class="web-line" cx="150" cy="50" r="2"/>
+            <circle class="web-line" cx="50" cy="150" r="2"/>
+            <circle class="web-line" cx="150" cy="150" r="2"/>
+            <circle class="web-line" cx="100" cy="100" r="3"/>
+        </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#webPattern)"/>
+</svg>
 
 <!-- WAVE BACKGROUND -->
 <canvas id="wave-canvas"></canvas>
@@ -724,21 +912,16 @@
         <div class="hero-left">
             <div class="hero-badge"><span class="dot"></span> Open to Work · Brampton, ON</div>
             <h1 class="hero-title">
-                HI, I'M <span class="accent">NAWAL</span> —<br>
-                BUSINESS <span class="accent2">TECHNOLOGY</span><br>
-                MANAGEMENT STUDENT.
+                <span class="accent" style="font-family: 'IBM Plex Mono', monospace; font-weight: 600;">Nawal El Khatib</span><br>
+                <span style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 1.05rem; color: #b03a2e; letter-spacing: 0.02em;">A Business Technology Management Co-Op student.</span>
             </h1>
             <p class="hero-sub">
                 BTM student at TMU who loves where business meets tech. I've run marketing campaigns, led conferences, crunched data, and generated leads — all while staying genuinely curious about automation and tech sales. When I'm not in strategy mode, you'll find me on a snowboard, bouldering wall, hiking trail, or in the gym.
             </p>
             <div class="hero-actions">
-                <a href="#" class="btn-primary" onclick="switchTab('portfolio'); return false;">
-                    View My Work
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-                <a href="Nawal_El-Khatibs_Resume__1_.pdf" download="Nawal_ElKhatib_Resume.pdf" class="btn-secondary">
+                <a href="Nawal_ElKhatib_Resume.pdf" target="_blank" class="btn-primary">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1v9M3.5 7l4 4 4-4M2 13h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Download Résumé
+                    View Resume
                 </a>
             </div>
         </div>
@@ -854,32 +1037,56 @@
     <div class="footer-section">
         <div>
             <h3 class="footer-cta-title">Let's Build Something<br><span class="hl">Great Together.</span></h3>
-            <p class="footer-cta-text">Whether you have a project in mind, a role to fill, or just want to connect — my inbox is always open.</p>
-            <a href="/cdn-cgi/l/email-protection#dbb5eabeb79bafb4a9b4b5afb4b6aef5b8ba" class="btn-primary">Say Hello →</a>
         </div>
-        <ul class="contact-list">
-            <li>
-                <span class="contact-icon">✉️</span>
-                <div>
-                    <span class="contact-label">Email</span>
-                    <span class="contact-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="761847131a36021904191802191b03581517">[email&#160;protected]</a></span>
-                </div>
-            </li>
-            <li>
-                <span class="contact-icon">💼</span>
-                <div>
-                    <span class="contact-label">LinkedIn</span>
-                    <span class="contact-val">linkedin.com/in/nawalelkhatib</span>
-                </div>
-            </li>
-            <li>
-                <span class="contact-icon">📍</span>
-                <div>
-                    <span class="contact-label">Location</span>
-                    <span class="contact-val">Brampton, Ontario</span>
-                </div>
-            </li>
-        </ul>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <ul class="contact-list" style="margin: 0;">
+                <li>
+                    <span class="contact-icon">💼</span>
+                    <div>
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-val">linkedin.com/in/nawalelkhatib</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-val">+1 (416) 555-0123</span>
+                    </div>
+                </li>
+            </ul>
+            <p class="footer-cta-text" style="margin: 0;">Whether you have a project in mind, a role to fill, or just want to connect — my inbox is always open.</p>
+            <a href="contact.html" class="btn-primary" style="align-self: flex-start;">Contact Me →</a>
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Get in Touch</h2>
+            <button class="modal-close" onclick="closeContactForm()">×</button>
+        </div>
+        <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea id="message" name="message" class="form-textarea" required></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Message</button>
+        </form>
     </div>
 </div>
 
@@ -891,79 +1098,79 @@
         <p class="section-sub">A curated selection of work across design, development, and creative direction.</p>
 
         <div class="projects-grid">
-            <!-- Card 1 -->
+            <!-- Marketing Campaign Card -->
             <div class="project-card">
                 <div class="project-thumb" style="font-size:2.5rem;">
-                    <div class="project-thumb-grad" style="background:linear-gradient(135deg,#e8ff4722,#ff6b3522);"></div>
-                    🚀
+                    <div class="project-thumb-grad" style="background:linear-gradient(135deg,#b03a2e22,#ff6b3522);"></div>
+                    📱
                 </div>
                 <div class="project-body">
-                    <div class="project-type">Category / Type</div>
-                    <div class="project-name">Project Name One</div>
-                    <p class="project-desc">Brief description of what this project is about, what problem it solved, and what your role was in bringing it to life.</p>
+                    <div class="project-type">Marketing Campaign</div>
+                    <div class="project-name">Kyocera B2B Lead Generation</div>
+                    <p class="project-desc">Managed paid Ads and Amazon campaigns for Kyocera, optimizing targeting and spend to generate qualified B2B leads. Increased conversion rates by 35% through data-driven campaign optimization.</p>
                 </div>
             </div>
-            <!-- Card 2 -->
+            <!-- Social Media Card -->
             <div class="project-card">
                 <div class="project-thumb">
                     <div class="project-thumb-grad" style="background:linear-gradient(135deg,#a78bfa22,#60a5fa22);"></div>
-                    🎨
+                    🎬
                 </div>
                 <div class="project-body">
-                    <div class="project-type">Category / Type</div>
-                    <div class="project-name">Project Name Two</div>
-                    <p class="project-desc">A short write-up about this project. Highlight the outcome, your contribution, and any tools or methods used.</p>
+                    <div class="project-type">Social Media Strategy</div>
+                    <div class="project-name">TheSoil.ca Brand Growth</div>
+                    <p class="project-desc">Produced 200+ social media video ads and managed influencer partnerships, resulting in 60%+ increase in user engagement and significant brand awareness growth.</p>
                 </div>
             </div>
-            <!-- Card 3 -->
+            <!-- Event Management Card -->
             <div class="project-card">
                 <div class="project-thumb">
                     <div class="project-thumb-grad" style="background:linear-gradient(135deg,#34d39922,#06b6d422);"></div>
-                    🛠️
+                    🎪
                 </div>
                 <div class="project-body">
-                    <div class="project-type">Category / Type</div>
-                    <div class="project-name">Project Name Three</div>
-                    <p class="project-desc">Describe the challenge, your approach, and the results. Keep it concise and impactful for visitors skimming your portfolio.</p>
+                    <div class="project-type">Event Management</div>
+                    <div class="project-name">NightMarket Toronto Operations</div>
+                    <p class="project-desc">Led volunteer teams and coordinated vendor operations for Toronto's largest night market, serving 1,000+ attendees across multiple seasonal events.</p>
                 </div>
             </div>
-            <!-- Card 4 -->
+            <!-- Data Analytics Card -->
             <div class="project-card">
                 <div class="project-thumb">
                     <div class="project-thumb-grad" style="background:linear-gradient(135deg,#f4722222,#f59e0b22);"></div>
                     📊
                 </div>
                 <div class="project-body">
-                    <div class="project-type">Category / Type</div>
-                    <div class="project-name">Project Name Four</div>
-                    <p class="project-desc">What did you build, and why does it matter? This is your chance to tell the story of a project in a few sentences.</p>
+                    <div class="project-type">Data Analytics</div>
+                    <div class="project-name">Marketing Performance Dashboard</div>
+                    <p class="project-desc">Built comprehensive Power BI dashboards to track campaign performance, customer acquisition costs, and ROI across multiple marketing channels.</p>
                 </div>
             </div>
-            <!-- Card 5 -->
+            <!-- Content Creation Card -->
             <div class="project-card">
                 <div class="project-thumb">
-                    <div class="project-thumb-grad" style="background:linear-gradient(135deg,#ec489922,#f4372722);"></div>
-                    🌐
+                    <div class="project-thumb-grad" style="background:linear-gradient(135deg,#ec489922,#8b5cf622);"></div>
+                    🎨
                 </div>
                 <div class="project-body">
-                    <div class="project-type">Category / Type</div>
-                    <div class="project-name">Project Name Five</div>
-                    <p class="project-desc">Add your actual project here. Replace emoji, category, title, and description with real details from your work.</p>
+                    <div class="project-type">Content Creation</div>
+                    <div class="project-name">Creative Campaign Production</div>
+                    <p class="project-desc">Directed photoshoots, filmed LinkedIn ads, and created AI-generated marketing collateral using Adobe Creative Suite and CapCut.</p>
                 </div>
             </div>
-            <!-- Card 6 -->
+            <!-- Retail Operations Card -->
             <div class="project-card">
                 <div class="project-thumb">
-                    <div class="project-thumb-grad" style="background:linear-gradient(135deg,#818cf822,#c084fc22);"></div>
-                    ✨
+                    <div class="project-thumb-grad" style="background:linear-gradient(135deg,#10b98122,#3b82f622);"></div>
+                    🏪
                 </div>
                 <div class="project-body">
-                    <div class="project-type">Category / Type</div>
-                    <div class="project-name">Project Name Six</div>
-                    <p class="project-desc">Showcase your range. Include projects from different areas to demonstrate versatility and depth across disciplines.</p>
+                    <div class="project-type">Retail Operations</div>
+                    <div class="project-name">Calvin Klein Sales Excellence</div>
+                    <p class="project-desc">Achieved 95% customer satisfaction at Canada's top-performing location, driving 20% monthly sales increases through exceptional service and team training.</p>
                 </div>
             </div>
-        </div>
+            </div>
     </section>
 </div>
 
@@ -1033,6 +1240,43 @@
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // ── CONTACT FORM FUNCTIONS ──
+    function openContactForm() {
+        document.getElementById('contactModal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeContactForm() {
+        document.getElementById('contactModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // Create mailto link
+        const mailtoLink = `mailto:nawal.elkhatib05@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Close modal
+        closeContactForm();
+    }
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(event) {
+        const modal = document.getElementById('contactModal');
+        if (event.target === modal) {
+            closeContactForm();
+        }
+    });
+
     // ── WAVE CANVAS ANIMATION ──
     const canvas = document.getElementById('wave-canvas');
     const ctx = canvas.getContext('2d');

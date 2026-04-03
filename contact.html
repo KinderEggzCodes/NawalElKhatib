@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact — Nawal El Khatib</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #ffffff;
+            --surface: #fafafa;
+            --surface2: #f3f3f1;
+            --accent: #111111;
+            --accent2: #b03a2e;
+            --text: #111111;
+            --muted: #777777;
+            --border: #e8e8e6;
+            --radius: 12px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(176, 58, 46, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(17, 17, 17, 0.05) 0%, transparent 50%),
+                var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-back {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .nav-back:hover { color: var(--text); }
+
+        /* ── CONTACT SECTION ── */
+        .contact-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 60px 60px;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 48px;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .contact-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .contact-title .hl { color: var(--accent2); }
+
+        .contact-subtitle {
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            background: var(--bg);
+            color: var(--text);
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent2);
+            box-shadow: 0 0 0 3px rgba(176, 58, 46, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px 28px;
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .form-submit:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 24px;
+            background: #f0f9f0;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            color: #2e7d32;
+            margin-top: 20px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav { padding: 16px 24px; }
+            .contact-section { padding: 100px 24px 40px; }
+            .contact-container { padding: 32px 24px; }
+            .contact-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <a href="index.html" class="nav-logo">Nawal El Khatib</a>
+    <a href="index.html" class="nav-back">← Return</a>
+</nav>
+
+<!-- CONTACT FORM -->
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1 class="contact-title">Let's Build Something<br><span class="hl">Great Together.</span></h1>
+            <p class="contact-subtitle">Have anything in mind? Connect with me here?</p>
+        </div>
+        
+        <form id="contactForm" action="https://formspree.io/f/xqkrqyvz" method="POST">
+            <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input type="text" id="name" name="name" class="form-input" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-input" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" class="form-input" required placeholder="What's this about?">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea id="message" name="message" class="form-textarea" required placeholder="Tell me about your project, opportunity, or just say hello..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+                Send Message
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M10 4l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            <strong>Thanks for reaching out!</strong><br>
+            Your message has been sent. I'll get back to you soon.
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const form = this;
+        const data = new FormData(form);
+        
+        fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                document.getElementById('successMessage').classList.add('show');
+                form.reset();
+            } else {
+                alert('Oops! There was a problem submitting your form. Please try again.');
+            }
+        }).catch(error => {
+            alert('Oops! There was a problem submitting your form. Please try again.');
+        });
+    });
+</script>
+
+</body>
+</html>
