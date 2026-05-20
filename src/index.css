@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #fafaf9;
+    color: #1c1917;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #ede9fe;
+    color: #5b21b6;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Purple gradient text — use as a className alongside font utilities */
+  .gradient-text {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient border helper — wrap target in this, add bg-white inside */
+  .gradient-border {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    padding: 2px;
+    border-radius: 9999px;
+  }
+
+  /* Purple glow shadow */
+  .shadow-purple-glow {
+    box-shadow: 0 0 60px -10px rgba(124, 58, 237, 0.35);
+  }
+}
