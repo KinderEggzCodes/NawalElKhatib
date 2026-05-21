@@ -17,7 +17,7 @@ const HOBBIES = [
 
 const TECHNICAL = [
   'Microsoft Office', 'Excel', 'PowerPoint', 'Word', 'Visio',
-  'Wix', 'Figma', 'Monday.com', 'Jira', 'Power BI',
+  'Wix', 'Figma', 'Monday CRM', 'Jira', 'Power BI',
   'Google Analytics', 'Adobe Creative Suite', 'CapCut', 'Veed',
   'Python', 'SQL', 'AWS', 'Azure', 'GCP',
   'Claude AI', 'Gemini', 'Amazon Ads', 'Google Ads',
@@ -49,8 +49,8 @@ export default function About() {
       id="about"
       className="min-h-screen pt-16 pb-4 bg-gradient-to-br from-white via-violet-50/20 to-purple-50/10"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-6 pb-4 sm:py-20">
-        <div className="grid grid-cols-2 gap-3 sm:gap-14 lg:gap-20 items-start">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-6 pb-4 sm:pt-6 sm:pb-20">
+        <div className="grid grid-cols-2 gap-3 sm:gap-14 lg:gap-20 items-start sm:items-stretch">
 
           {/* ── LEFT: text ── */}
           <div className="flex flex-col gap-2 sm:gap-8">
@@ -70,7 +70,7 @@ export default function About() {
               <div className="flex items-start gap-1 sm:gap-2 text-stone-600">
                 <Library className="w-3 h-3 sm:w-4 sm:h-4 text-violet-500 flex-shrink-0 mt-0.5" />
                 <p className="text-[10px] sm:text-base font-semibold tracking-wide">
-                  Business Technology Management<br />Co-Op Student
+                  Business Technology<br className="sm:hidden" />Management Co-Op Student
                 </p>
               </div>
               <div className="flex items-start gap-1 sm:gap-2 text-stone-500">
@@ -85,7 +85,7 @@ export default function About() {
             {/* Bio — hidden on mobile */}
             <motion.p
               {...fadeUp(0.18)}
-              className="hidden sm:block text-[15px] text-stone-600 leading-[1.8] max-w-[520px]"
+              className="hidden sm:block text-[15px] text-stone-600 leading-[1.8]"
             >
               Driven by a passion for the intersection of business and technology, I
               actively seek diverse experiences across industries to identify where I can
@@ -118,13 +118,13 @@ export default function About() {
 
           {/* ── RIGHT: profile photo ── */}
           <motion.div
-            className="flex justify-end"
+            className="flex justify-end items-start sm:items-stretch"
             initial={{ opacity: 0, scale: 0.88 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative">
+            <div className="relative sm:h-full">
               <ProfilePhoto />
 
               {/* Floating card — top right */}
@@ -201,7 +201,7 @@ function ProfilePhoto() {
   const [errored, setErrored] = useState(false)
 
   return errored ? (
-    <div className="w-36 h-44 sm:w-72 sm:h-[400px] lg:w-[360px] lg:h-[460px] rounded-[12px] bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center">
+    <div className="w-36 h-44 sm:w-72 sm:h-full lg:w-[360px] rounded-[12px] bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center">
       <span className="text-3xl sm:text-6xl font-black gradient-text">NE</span>
     </div>
   ) : (
@@ -209,7 +209,7 @@ function ProfilePhoto() {
       src="/nawal.jpg"
       alt="Nawal El Khatib"
       onError={() => setErrored(true)}
-      className="w-36 h-44 sm:w-72 sm:h-[400px] lg:w-[360px] lg:h-[460px] rounded-[12px] object-cover block"
+      className="w-36 h-44 sm:w-72 sm:h-full lg:w-[360px] rounded-[12px] object-cover object-top block"
     />
   )
 }

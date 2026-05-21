@@ -97,10 +97,9 @@ const LEADERSHIP = [
     ],
     bullets: [
       'Outreached to over 100 universities to attract student participants and boost event engagement',
-      'Secured over 20 in-kind sponsorship items from local and major businesses',
-      'Created 10+ marketing materials including social media posts, flyers, and email campaigns',
-      'Contacted 100+ industry professionals and invited them to the 18th annual 3-day Battle on Bay conference',
-      'Secured and coordinated venues ensuring a professional environment for presentations and networking',
+      'Secured over 30 in-kind sponsorship items from local and major businesses to enhance the event experience',
+      'Contacted 100+ industry professionals; invited them to the 18th annual, 3-day Battle on Bay conference to network and connect',
+      'Secured and coordinated venues, ensuring a professional environment for presentations and networking',
     ],
   },
   {
@@ -114,10 +113,9 @@ const LEADERSHIP = [
       { label: 'Website', url: 'https://mdsa.ca/' },
     ],
     bullets: [
-      'Collaborated with the team to negotiate and close over 5 partnerships with companies like Fidelity, CIBC, and RBC, generating $10,000 in funding',
-      'Connected with industry professionals from RBC, Indeed, and KPMG, inviting them to events to boost networking',
-      'Participated in a 3-day DataDash Hackathon case competition, developing a solution for sustainable development issues',
-      'Presented solutions to 5 corporate representatives',
+      'Collaborated with the team to negotiate and close over 5 partnerships with leading companies like Fidelity, CIBC, and RBC, generating $5,000 in funding for collaborative projects with MDSA',
+      'Connected with industry professionals from RBC, Indeed, and KPMG, inviting them to events to boost networking and online visibility',
+      'Participated in a 3-day DataDash Hackathon case competition collaborating with a team to develop a solution for sustainable development issues; presented solutions to 5 corporate representatives',
     ],
   },
 ]

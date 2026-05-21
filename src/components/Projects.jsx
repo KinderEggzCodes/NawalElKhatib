@@ -6,46 +6,48 @@ import { Megaphone, ArrowUp, ArrowDown } from 'lucide-react'
 
 const PROJECTS = [
   {
-    title:     'Comparative Analysis of Three Cloud Platforms',
-    tools:     ['AWS', 'Azure', 'GCP', 'Technical Research'],
+    title:   'Comparative Analysis of Three Cloud Platforms',
+    tools:   ['AWS', 'Azure', 'GCP', 'Technical Research'],
     bullets: [
       'Compared AWS, Azure, and GCP across core services',
       'Recommended best-fit platform based on client needs',
     ],
   },
   {
-    title:     'Retail Inventory Database Project',
-    tools:     ['SQL', 'ERD', 'Data Normalization'],
+    title:   'Retail Inventory Database Project',
+    tools:   ['SQL', 'ERD', 'Data Normalization'],
     bullets: [
       'Built a relational database to track products, suppliers, and sales',
       'Designed ERD and wrote SQL queries for inventory control and sales analysis',
     ],
   },
   {
-    title:     'Dealer and Trade Show Event Planning',
-    tools:     ['Monday.com', 'Budget Management', 'Cross-functional Coordination'],
+    title:     'B2B Marketing Campaign Management',
+    tools:     ['Google Ads', 'Amazon Ads', 'Power BI', 'Jira', 'Google Analytics'],
+    showStats: true,
     bullets: [
-      'Planned dealer activations, trade shows, and product launches across Canada',
-      'Managed full event budgets from vendor negotiations to post-event reporting',
-      'Coordinated cross-functional timelines using Monday.com',
+      'Managed Google Ads and Amazon paid campaigns for B2B lead generation',
+      'Worked in Agile sprints using Jira to track deliverables and timelines',
+      'Reported weekly performance insights via Power BI and Google Analytics',
+      'Optimized targeting, audience segmentation, and ad spend continuously',
     ],
   },
   {
-    title:     'AI Integration and Creative Content Initiative',
-    tools:     ['Adobe Creative Suite', 'CapCut', 'Claude AI', 'Content Strategy'],
+    title:   'Dealer/Employee Event Planning',
+    tools:   ['Monday CRM', 'Budget Management', 'Cross-functional Coordination'],
+    bullets: [
+      'Planned dealer activations, partner/vendor events, and product launches across Canada',
+      'Managed full event budgets from vendor negotiations to post-event reporting',
+      'Coordinated cross-functional timelines using Monday CRM',
+    ],
+  },
+  {
+    title:   'AI Integration and Creative Content Initiative',
+    tools:   ['Adobe Creative Suite', 'CapCut', 'Claude AI', 'Content Strategy'],
     bullets: [
       'Introduced Claude AI to the marketing team before end of co-op',
       'Identified workflows where AI could streamline content creation and reporting',
       'Laid groundwork for AI-assisted marketing initiatives going forward',
-    ],
-  },
-  {
-    title:      'B2B Marketing Campaign Management',
-    tools:      ['Google Ads', 'Amazon Ads', 'Power BI', 'Jira', 'Google Analytics'],
-    showStats:  true,
-    bullets: [
-      'Managed Google Ads and Amazon B2B campaigns while optimizing targeting and ad spend',
-      'Tracked Agile deliverables through Jira and reported insights using Power BI and Google Analytics',
     ],
   },
 ]
@@ -96,15 +98,33 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Cards grid — 3-col on lg, 2-col on md */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+        {/* ── Desktop: 3 independent flex columns (no row-height coupling) ── */}
+        <div className="hidden lg:flex gap-6 items-start">
+          {/* Col 1: Cloud Platforms + Dealer/Employee */}
+          <div className="flex flex-col gap-6 flex-1">
+            <motion.div {...cardAnim(0.00)}><ProjectCard project={PROJECTS[0]} /></motion.div>
+            <motion.div {...cardAnim(0.21)}><ProjectCard project={PROJECTS[3]} /></motion.div>
+          </div>
+          {/* Col 2: Retail Inventory + AI Integration */}
+          <div className="flex flex-col gap-6 flex-1">
+            <motion.div {...cardAnim(0.07)}><ProjectCard project={PROJECTS[1]} /></motion.div>
+            <motion.div {...cardAnim(0.28)}><ProjectCard project={PROJECTS[4]} /></motion.div>
+          </div>
+          {/* Col 3: B2B + stats (full natural height) */}
+          <div className="flex-1">
+            <motion.div {...cardAnim(0.14)}><ProjectCard project={PROJECTS[2]} /></motion.div>
+          </div>
+        </div>
+
+        {/* ── Mobile/Tablet: 2-col grid, B2B full-width last ── */}
+        <div className="lg:hidden grid grid-cols-2 gap-3 sm:gap-6">
           {PROJECTS.map((project, i) => (
             <motion.div
               key={i}
               {...cardAnim(i * 0.07)}
-              className={project.showStats ? 'col-span-2 lg:col-span-1 lg:row-span-2 lg:flex lg:flex-col' : ''}
+              className={`h-full ${project.showStats ? 'col-span-2 order-last' : ''}`}
             >
-              <ProjectCard project={project} tall={project.showStats} />
+              <ProjectCard project={project} />
             </motion.div>
           ))}
         </div>
@@ -141,9 +161,9 @@ export default function Projects() {
 
 // ─── Project card ─────────────────────────────────────────────────────────────
 
-function ProjectCard({ project, tall = false }) {
+function ProjectCard({ project }) {
   return (
-    <article className={`group flex flex-col bg-white rounded-3xl border border-stone-200 overflow-hidden hover:shadow-xl hover:border-violet-200 hover:shadow-violet-100/40 transition-all duration-300 hover:-translate-y-1${tall ? ' h-full' : ''}`}>
+    <article className="group flex flex-col bg-white rounded-3xl border border-stone-200 overflow-hidden hover:shadow-xl hover:border-violet-200 hover:shadow-violet-100/40 transition-all duration-300 hover:-translate-y-1 h-full">
       <div className="flex flex-col flex-1 p-4 sm:p-6 gap-4">
 
         {/* Tags */}
@@ -184,7 +204,7 @@ function ProjectCard({ project, tall = false }) {
 
 function MiniStatsBanner() {
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-violet-950 to-purple-900 p-3 sm:p-5 mt-1">
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-violet-950 to-purple-900 p-5 mt-1">
       {/* Dot texture */}
       <div
         className="absolute inset-0 opacity-[0.07]"
@@ -198,15 +218,15 @@ function MiniStatsBanner() {
 
       <div className="relative z-10">
         {/* Label */}
-        <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-4">
-          <Megaphone className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white/50" />
-          <p className="text-white/50 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest">
+        <div className="flex items-center gap-2 mb-4">
+          <Megaphone className="w-3 h-3 text-white/50" />
+          <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest">
             Social Media Growth · Kyocera
           </p>
         </div>
 
         {/* Counters */}
-        <div className="flex flex-col sm:grid sm:grid-cols-3 gap-1.5 sm:gap-3">
+        <div className="grid grid-cols-3 gap-3">
           {STATS.map((stat, i) => (
             <StatCounter key={i} stat={stat} delay={i * 0.12} />
           ))}
@@ -244,18 +264,16 @@ function StatCounter({ stat, delay = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.15 + delay, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-row sm:flex-col items-center sm:items-start gap-2 sm:gap-0.5"
+      className="flex flex-col gap-0.5"
     >
-      <div className="flex items-end gap-0.5 flex-shrink-0">
-        <span className="text-base sm:text-xl font-black text-white tabular-nums leading-none">
+      <div className="flex items-end gap-1">
+        <span className="text-xl font-black text-white tabular-nums leading-none">
           {stat.format(val)}
         </span>
-        <ArrowUp className="w-2 h-2 sm:w-3 sm:h-3 text-emerald-400 mb-0.5" />
+        <ArrowUp className="w-3 h-3 text-emerald-400 mb-0.5" />
       </div>
-      <div className="flex flex-col gap-0 sm:gap-0.5">
-        <p className="text-white/60 text-[8px] sm:text-[10px] font-semibold leading-tight">{stat.label}</p>
-        <p className="text-emerald-400 text-[8px] sm:text-[10px] font-medium">{stat.subtext}</p>
-      </div>
+      <p className="text-white/60 text-[10px] font-semibold leading-tight">{stat.label}</p>
+      <p className="text-emerald-400 text-[10px] font-medium">{stat.subtext}</p>
     </motion.div>
   )
 }
