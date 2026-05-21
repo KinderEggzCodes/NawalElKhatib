@@ -64,11 +64,12 @@ export default function Contact({ onSendMessage }) {
             href="https://linkedin.com/in/nawalelkhatib"
             target="_blank"
             rel="noopener noreferrer"
+            className="w-full sm:w-auto"
           >
             <Button
               variant="linkedin"
               size="lg"
-              className="gap-3 text-base px-8 h-13 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 min-w-[220px]"
+              className="w-full sm:w-auto gap-3 text-base px-8 h-13 rounded-2xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 sm:min-w-[220px]"
             >
               <Linkedin className="w-5 h-5" />
               Connect on LinkedIn
@@ -76,11 +77,11 @@ export default function Contact({ onSendMessage }) {
           </a>
 
           {/* Phone */}
-          <a href="tel:+16474471115">
+          <a href="tel:+16474471115" className="w-full sm:w-auto">
             <Button
               variant="outline"
               size="lg"
-              className="gap-3 text-base px-8 h-13 rounded-2xl min-w-[220px] border-violet-500 text-violet-300 hover:bg-violet-900/40 bg-transparent"
+              className="w-full sm:w-auto gap-3 text-base px-8 h-13 rounded-2xl sm:min-w-[220px] border-violet-500 text-violet-300 hover:bg-violet-900/40 bg-transparent"
             >
               <Phone className="w-5 h-5" />
               (647) 447-1115

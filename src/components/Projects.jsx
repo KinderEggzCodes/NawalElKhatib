@@ -22,17 +22,6 @@ const PROJECTS = [
     ],
   },
   {
-    title:      'B2B Marketing Campaign Management',
-    tools:      ['Google Ads', 'Amazon Ads', 'Power BI', 'Jira', 'Google Analytics'],
-    showStats:  true,
-    bullets: [
-      'Managed Google Ads and Amazon paid campaigns for B2B lead generation',
-      'Worked in Agile sprints using Jira to track deliverables and timelines',
-      'Reported weekly performance insights via Power BI and Google Analytics',
-      'Optimized targeting, audience segmentation, and ad spend continuously',
-    ],
-  },
-  {
     title:     'Dealer and Trade Show Event Planning',
     tools:     ['Monday.com', 'Budget Management', 'Cross-functional Coordination'],
     bullets: [
@@ -48,6 +37,15 @@ const PROJECTS = [
       'Introduced Claude AI to the marketing team before end of co-op',
       'Identified workflows where AI could streamline content creation and reporting',
       'Laid groundwork for AI-assisted marketing initiatives going forward',
+    ],
+  },
+  {
+    title:      'B2B Marketing Campaign Management',
+    tools:      ['Google Ads', 'Amazon Ads', 'Power BI', 'Jira', 'Google Analytics'],
+    showStats:  true,
+    bullets: [
+      'Managed Google Ads and Amazon B2B campaigns while optimizing targeting and ad spend',
+      'Tracked Agile deliverables through Jira and reported insights using Power BI and Google Analytics',
     ],
   },
 ]
@@ -99,12 +97,12 @@ export default function Projects() {
         </motion.div>
 
         {/* Cards grid — 3-col on lg, 2-col on md */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
           {PROJECTS.map((project, i) => (
             <motion.div
               key={i}
               {...cardAnim(i * 0.07)}
-              className={project.showStats ? 'lg:row-span-2 lg:flex lg:flex-col' : ''}
+              className={project.showStats ? 'col-span-2 lg:col-span-1 lg:row-span-2 lg:flex lg:flex-col' : ''}
             >
               <ProjectCard project={project} tall={project.showStats} />
             </motion.div>
@@ -146,14 +144,14 @@ export default function Projects() {
 function ProjectCard({ project, tall = false }) {
   return (
     <article className={`group flex flex-col bg-white rounded-3xl border border-stone-200 overflow-hidden hover:shadow-xl hover:border-violet-200 hover:shadow-violet-100/40 transition-all duration-300 hover:-translate-y-1${tall ? ' h-full' : ''}`}>
-      <div className="flex flex-col flex-1 p-6 gap-4">
+      <div className="flex flex-col flex-1 p-4 sm:p-6 gap-4">
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1">
           {project.tools.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-violet-50 text-violet-600 border border-violet-100"
+              className="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider px-1.5 sm:px-2 py-0.5 rounded-full bg-violet-50 text-violet-600 border border-violet-100"
             >
               {tag}
             </span>
@@ -162,13 +160,13 @@ function ProjectCard({ project, tall = false }) {
 
         {/* Title + bullets */}
         <div className="flex-1">
-          <h3 className="text-base font-black text-stone-900 mb-3 group-hover:text-violet-700 transition-colors leading-snug">
+          <h3 className="text-[10px] sm:text-base font-black text-stone-900 mb-2 sm:mb-3 group-hover:text-violet-700 transition-colors leading-snug">
             {project.title}
           </h3>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-1 sm:gap-2">
             {project.bullets.map((b, i) => (
-              <li key={i} className="flex items-start gap-2.5 text-sm text-stone-500 leading-relaxed">
-                <span className="w-1.5 h-1.5 rounded-full bg-violet-400 flex-shrink-0 mt-[6px]" />
+              <li key={i} className="flex items-start gap-1.5 sm:gap-2.5 text-[10px] sm:text-sm text-stone-500 leading-relaxed">
+                <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-violet-400 flex-shrink-0 mt-[4px] sm:mt-[6px]" />
                 {b}
               </li>
             ))}
@@ -186,7 +184,7 @@ function ProjectCard({ project, tall = false }) {
 
 function MiniStatsBanner() {
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-violet-950 to-purple-900 p-5 mt-1">
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-violet-950 to-purple-900 p-3 sm:p-5 mt-1">
       {/* Dot texture */}
       <div
         className="absolute inset-0 opacity-[0.07]"
@@ -200,15 +198,15 @@ function MiniStatsBanner() {
 
       <div className="relative z-10">
         {/* Label */}
-        <div className="flex items-center gap-2 mb-4">
-          <Megaphone className="w-3 h-3 text-white/50" />
-          <p className="text-white/50 text-[10px] font-bold uppercase tracking-widest">
+        <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-4">
+          <Megaphone className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-white/50" />
+          <p className="text-white/50 text-[8px] sm:text-[10px] font-bold uppercase tracking-widest">
             Social Media Growth · Kyocera
           </p>
         </div>
 
         {/* Counters */}
-        <div className="grid grid-cols-3 gap-3">
+        <div className="flex flex-col sm:grid sm:grid-cols-3 gap-1.5 sm:gap-3">
           {STATS.map((stat, i) => (
             <StatCounter key={i} stat={stat} delay={i * 0.12} />
           ))}
@@ -246,16 +244,18 @@ function StatCounter({ stat, delay = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.15 + delay, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-col gap-0.5"
+      className="flex flex-row sm:flex-col items-center sm:items-start gap-2 sm:gap-0.5"
     >
-      <div className="flex items-end gap-1">
-        <span className="text-xl font-black text-white tabular-nums leading-none">
+      <div className="flex items-end gap-0.5 flex-shrink-0">
+        <span className="text-base sm:text-xl font-black text-white tabular-nums leading-none">
           {stat.format(val)}
         </span>
-        <ArrowUp className="w-3 h-3 text-emerald-400 mb-0.5" />
+        <ArrowUp className="w-2 h-2 sm:w-3 sm:h-3 text-emerald-400 mb-0.5" />
       </div>
-      <p className="text-white/60 text-[10px] font-semibold leading-tight">{stat.label}</p>
-      <p className="text-emerald-400 text-[10px] font-medium">{stat.subtext}</p>
+      <div className="flex flex-col gap-0 sm:gap-0.5">
+        <p className="text-white/60 text-[8px] sm:text-[10px] font-semibold leading-tight">{stat.label}</p>
+        <p className="text-emerald-400 text-[8px] sm:text-[10px] font-medium">{stat.subtext}</p>
+      </div>
     </motion.div>
   )
 }

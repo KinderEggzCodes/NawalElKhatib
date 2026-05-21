@@ -14,13 +14,9 @@ const EXPERIENCES = [
     logo:     '/kyocera.jpeg',
     initials: 'KD',
     bullets: [
-      'Secured Claude AI adoption with Director of Marketing, building custom Artifacts/skills to standardize branded content workflows',
-      'Restructured lead generation Excel database and presented performance analysis via Power BI and Claude AI',
-      'Optimized Amazon Brand Store collateral and conducted keyword analysis to improve B2B lead generation',
-      'Managed email marketing campaigns via Mailchimp, segmenting dealer and partner lists to support product launches and activations',
-      'Coordinated 3 partner events, dealer activations, and product launches cross-functionally via Monday CRM',
-      'Collaborated with a Spain-based creative agency via Jira, managing sprint cycles to deliver marketing content/collaterals on schedule',
-      'Deployed Veed and CapCut for avatar-led videos and French translations for Quebec dealer communications',
+      'Drove Claude AI adoption by building branded workflow Artifacts, reorganized lead databases with Power BI reporting, and optimized Amazon Brand Store assets through B2B keyword analysis',
+      'Managed Mailchimp campaigns, coordinated dealer activations and product launches through Monday CRM, and collaborated with a Spain-based agency via Jira Agile sprints',
+      'Produced avatar-led videos and French-translated marketing content for Quebec dealers using Veed and CapCut',
     ],
   },
   {
@@ -31,10 +27,10 @@ const EXPERIENCES = [
     logo:     '/soil.jpeg',
     initials: 'TS',
     bullets: [
-      'Handled sponsorship outreach, building partnerships with influencers and brands by leveraging Excel for tracking performance',
-      'Produced high-quality photos for the website and over 200 social media video ads, increasing user engagement by over 60%',
-      'Managed and organized 40+ pop-up events while addressing customer inquiries',
-      'Coordinated 5+ photoshoots, collaborating with photographers, models, and stylists',
+      'Led sponsorship outreach and tracked influencer/brand partnerships using Excel',
+      'Produced website photography and 200+ social media ads, boosting engagement by 60%+',
+      'Managed 40+ pop-up events and handled customer inquiries',
+      'Coordinated photoshoots with photographers, models, and stylists',
     ],
   },
   {
@@ -45,10 +41,10 @@ const EXPERIENCES = [
     logo:     '/ck.jpeg',
     initials: 'CK',
     bullets: [
-      "Provided elite customer service at Canada's top-performing high-volume location, achieving a 95% satisfaction rating and driving monthly sales increases of 20%",
-      'Closed and opened registers, processing 200 transactions daily while ensuring excellent customer service during peak hours',
-      'Maintained merchandise presentation, trained 20+ new employees, and guided them on store standards for corporate visits',
-      'Collaborated with team members to optimize store layout and inventory processes',
+      'Delivered top-tier customer service at a high-volume location, contributing to 20% monthly sales growth',
+      'Processed 200+ daily transactions while managing opening and closing duties',
+      'Trained 20+ employees and maintained store presentation standards',
+      'Assisted with store layout and inventory organization',
     ],
   },
   {
@@ -163,8 +159,8 @@ export default function Experience() {
   const [tab, setTab] = useState('work')
 
   return (
-    <section id="experience" className="bg-slate-50 pt-14 pb-10">
-      <div className="max-w-5xl mx-auto px-6 lg:px-10">
+    <section id="experience" className="bg-slate-50 pt-8 sm:pt-14 pb-8 sm:pb-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* Section header */}
         <motion.div
@@ -201,7 +197,7 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="flex gap-2 mb-12 bg-white rounded-2xl p-1.5 border border-stone-200 w-fit shadow-sm mx-auto"
+          className="flex gap-2 mb-12 bg-white rounded-2xl p-1.5 border border-stone-200 w-full sm:w-fit shadow-sm mx-auto"
         >
           <TabButton active={tab === 'work'} onClick={() => setTab('work')}>
             Work Experience
@@ -238,7 +234,7 @@ function TabButton({ active, onClick, children }) {
     <button
       onClick={onClick}
       className={[
-        'px-8 py-3.5 rounded-xl text-base font-bold transition-all duration-200',
+        'flex-1 sm:flex-none px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all duration-200',
         active
           ? 'bg-gradient-to-r from-violet-600 to-purple-500 text-white shadow-sm'
           : 'text-stone-500 hover:text-violet-600',
@@ -254,19 +250,19 @@ function TabButton({ active, onClick, children }) {
 function WorkTab() {
   return (
     <div className="space-y-0">
-      <motion.div {...rowAnim(0)} className="grid md:grid-cols-2 gap-6 items-stretch">
+      <motion.div {...rowAnim(0)} className="grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-6 items-stretch">
         {ROWS[0].map((exp, i) => <ExperienceCard key={i} exp={exp} delay={i * 0.08} />)}
       </motion.div>
 
       <SnakeCurve direction="right" />
 
-      <motion.div {...rowAnim(0.05)} className="grid md:grid-cols-2 gap-6 items-stretch">
+      <motion.div {...rowAnim(0.05)} className="grid grid-cols-2 md:grid-cols-2 gap-2 sm:gap-6 items-stretch">
         {ROWS[1].map((exp, i) => <ExperienceCard key={i} exp={exp} delay={i * 0.08} />)}
       </motion.div>
 
       <SnakeCurve direction="left" />
 
-      <motion.div {...rowAnim(0.05)} className="grid md:grid-cols-2 gap-6">
+      <motion.div {...rowAnim(0.05)} className="grid sm:grid-cols-2 gap-2 sm:gap-6">
         {ROWS[2].map((exp, i) => <ExperienceCard key={i} exp={exp} delay={0} />)}
       </motion.div>
     </div>
@@ -281,7 +277,7 @@ function LeadershipTab() {
       <div className="grid md:grid-cols-2 gap-6 mb-10">
         {LEADERSHIP.map((item, i) => (
           <motion.div key={i} {...cardAnim(i * 0.12)} className="h-full">
-            <div className="h-full bg-gradient-to-br from-violet-50/50 to-white border border-stone-200 rounded-2xl p-6 hover:shadow-lg hover:border-violet-200 hover:shadow-violet-100/50 transition-all duration-300 group flex flex-col">
+            <div className="h-full bg-gradient-to-br from-violet-50/50 to-white border border-stone-200 rounded-2xl p-4 sm:p-6 hover:shadow-lg hover:border-violet-200 hover:shadow-violet-100/50 transition-all duration-300 group flex flex-col">
 
               <div className="flex items-start gap-3 mb-4">
                 <OrgLogo src={item.logo} initials={item.initials} alt={item.org} />
@@ -321,7 +317,7 @@ function LeadershipTab() {
 
               <ul className="flex flex-col gap-2 flex-1">
                 {item.bullets.map((b, j) => (
-                  <li key={j} className="flex items-start gap-2 text-xs text-stone-600 leading-relaxed">
+                  <li key={j} className="flex items-start gap-2 text-[13px] text-stone-600 leading-relaxed">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-400 flex-shrink-0 mt-[5px]" />
                     {b}
                   </li>
@@ -393,36 +389,36 @@ function ExperienceCard({ exp, delay = 0 }) {
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay }}
       className="h-full"
     >
-      <div className="h-full bg-white border border-stone-200 rounded-2xl p-5 hover:shadow-lg hover:border-violet-200 hover:shadow-violet-100/50 transition-all duration-300 group flex flex-col">
+      <div className="h-full bg-white border border-stone-200 rounded-2xl p-3 sm:p-5 hover:shadow-lg hover:border-violet-200 hover:shadow-violet-100/50 transition-all duration-300 group flex flex-col">
 
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <div className="flex items-center gap-3 min-w-0">
+        <div className="flex flex-col gap-1.5 sm:gap-3 mb-2 sm:mb-4">
+          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
             <CompanyLogo src={exp.logo} initials={exp.initials} alt={exp.company} />
             <div className="min-w-0">
-              <h3 className="text-sm font-black text-stone-900 group-hover:text-violet-700 transition-colors leading-tight truncate">
+              <h3 className="text-[10px] sm:text-sm font-black text-stone-900 group-hover:text-violet-700 transition-colors leading-tight">
                 {exp.company}
               </h3>
-              <p className="text-xs font-semibold text-violet-600 mt-0.5">{exp.role}</p>
+              <p className="text-[9px] sm:text-xs font-semibold text-violet-600 mt-0.5 leading-tight">{exp.role}</p>
             </div>
           </div>
-          <div className="flex flex-col items-end gap-1 flex-shrink-0">
-            <span className="flex items-center gap-1 text-[10px] text-stone-500 font-medium whitespace-nowrap">
-              <Calendar className="w-2.5 h-2.5" />
+          <div className="flex flex-row flex-wrap gap-x-2 gap-y-0.5">
+            <span className="flex items-center gap-0.5 text-[8px] sm:text-[10px] text-stone-500 font-medium">
+              <Calendar className="w-2 h-2 sm:w-2.5 sm:h-2.5 flex-shrink-0" />
               {exp.period}
             </span>
-            <span className="flex items-center gap-1 text-[10px] text-stone-400 font-medium whitespace-nowrap">
-              <MapPin className="w-2.5 h-2.5" />
+            <span className="flex items-center gap-0.5 text-[8px] sm:text-[10px] text-stone-400 font-medium">
+              <MapPin className="w-2 h-2 sm:w-2.5 sm:h-2.5 flex-shrink-0" />
               {exp.location}
             </span>
           </div>
         </div>
 
-        <div className="h-px bg-stone-100 mb-4" />
+        <div className="h-px bg-stone-100 mb-2 sm:mb-4" />
 
-        <ul className="flex flex-col gap-2 flex-1">
+        <ul className="flex flex-col gap-1 sm:gap-2 flex-1">
           {exp.bullets.map((b, j) => (
-            <li key={j} className="flex items-start gap-2 text-xs text-stone-600 leading-relaxed">
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 flex-shrink-0 mt-[5px]" />
+            <li key={j} className="flex items-start gap-1.5 sm:gap-2 text-[10px] sm:text-[13px] text-stone-600 leading-relaxed">
+              <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-violet-400 flex-shrink-0 mt-[4px] sm:mt-[5px]" />
               {b}
             </li>
           ))}
@@ -439,7 +435,7 @@ function CompanyLogo({ src, initials, alt }) {
 
   if (!src || errored) {
     return (
-      <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-600 to-purple-500 flex items-center justify-center text-white text-[10px] font-black flex-shrink-0 shadow-sm">
+      <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-violet-600 to-purple-500 flex items-center justify-center text-white text-[7px] sm:text-[10px] font-black flex-shrink-0 shadow-sm">
         {initials}
       </div>
     )
@@ -450,7 +446,7 @@ function CompanyLogo({ src, initials, alt }) {
       src={src}
       alt={alt}
       onError={() => setErrored(true)}
-      className="w-9 h-9 rounded-lg object-contain bg-white border border-stone-200 flex-shrink-0 shadow-sm"
+      className="w-6 h-6 sm:w-9 sm:h-9 rounded-lg object-contain bg-white border border-stone-200 flex-shrink-0 shadow-sm"
     />
   )
 }
@@ -462,7 +458,7 @@ function OrgLogo({ src, initials, alt }) {
 
   if (!src || errored) {
     return (
-      <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-600 to-purple-500 flex items-center justify-center text-white text-[10px] font-black flex-shrink-0 shadow-sm">
+      <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-violet-600 to-purple-500 flex items-center justify-center text-white text-[7px] sm:text-[10px] font-black flex-shrink-0 shadow-sm">
         {initials}
       </div>
     )
@@ -473,7 +469,7 @@ function OrgLogo({ src, initials, alt }) {
       src={src}
       alt={alt}
       onError={() => setErrored(true)}
-      className="w-9 h-9 rounded-lg object-contain bg-white border border-stone-200 flex-shrink-0 shadow-sm"
+      className="w-6 h-6 sm:w-9 sm:h-9 rounded-lg object-contain bg-white border border-stone-200 flex-shrink-0 shadow-sm"
     />
   )
 }
