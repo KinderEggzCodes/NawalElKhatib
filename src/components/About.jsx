@@ -57,8 +57,8 @@ export default function About() {
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
         {/* Black transparent gradient — keeps text legible over the photo */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/15 to-transparent" />
 
         {/* Hero text */}
         <div className="relative mx-auto flex min-h-[88vh] w-full max-w-7xl flex-col justify-end px-6 pb-32 pt-28 lg:px-10">
