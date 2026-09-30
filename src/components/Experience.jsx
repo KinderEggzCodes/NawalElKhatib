@@ -7,6 +7,19 @@ import ScrollPrompt from './ScrollPrompt'
 
 const EXPERIENCES = [
   {
+    company:  'Air Canada',
+    role:     'Brand Marketing Intern',
+    period:   'Sep 2026 to Present',
+    location: 'Mississauga, ON',
+    logo:     '/aircanada.png',
+    initials: 'AC',
+    bullets: [
+      'Execute integrated marketing campaigns for Air Canada and Aeroplan, building brand strategy skills',
+      'Coordinate brand activations and events, including Best New Restaurants, strengthening stakeholder management',
+      'Monitor campaign performance, developing data analysis and collaboration skills',
+    ],
+  },
+  {
     company:  'Kyocera Document Solutions Ltd.',
     role:     'Marketing Co-Op',
     period:   'Sep 2025 to Apr 2026',
@@ -78,7 +91,7 @@ const EXPERIENCES = [
 const ROWS = [
   EXPERIENCES.slice(0, 2),
   EXPERIENCES.slice(2, 4),
-  EXPERIENCES.slice(4, 5),
+  EXPERIENCES.slice(4, 6),
 ]
 
 // ── Leadership data ───────────────────────────────────────────────────────────
