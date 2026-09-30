@@ -11,16 +11,16 @@ const fadeUp = (delay = 0) => ({
 
 export default function Contact({ onSendMessage }) {
   return (
-    <section id="contact" className="bg-gray-900 py-32">
+    <section id="contact" className="bg-stone-900 py-32">
       <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
 
         {/* Eyebrow */}
         <motion.div {...fadeUp(0)} className="flex items-center justify-center gap-3 mb-6">
-          <div className="h-px w-10 bg-gradient-to-r from-violet-400 to-purple-400" />
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-400">
+          <div className="h-px w-10 bg-stone-400" />
+          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-400">
             Get In Touch
           </span>
-          <div className="h-px w-10 bg-gradient-to-r from-purple-400 to-violet-400" />
+          <div className="h-px w-10 bg-stone-400" />
         </motion.div>
 
         {/* Headline */}
@@ -30,9 +30,9 @@ export default function Contact({ onSendMessage }) {
         >
           Let's{' '}
           <span className="relative inline-block">
-            <span className="relative z-10 gradient-text">Connect</span>
+            <span className="relative z-10 gradient-text-light">Connect</span>
             <motion.span
-              className="absolute -bottom-1 left-0 right-0 h-3 bg-violet-900/60 rounded-full -z-0"
+              className="absolute -bottom-1 left-0 right-0 h-3 bg-stone-400/40 rounded-full -z-0"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
@@ -44,7 +44,7 @@ export default function Contact({ onSendMessage }) {
 
         {/* Subtext */}
         <motion.div {...fadeUp(0.14)} className="flex items-center justify-center gap-2 text-gray-300 mb-2">
-          <MapPin className="w-4 h-4 text-violet-400 flex-shrink-0" />
+          <MapPin className="w-4 h-4 text-stone-400 flex-shrink-0" />
           <p className="text-base font-medium">Brampton, ON</p>
         </motion.div>
         <motion.p
@@ -81,7 +81,7 @@ export default function Contact({ onSendMessage }) {
             <Button
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto gap-3 text-base px-8 h-13 rounded-2xl sm:min-w-[220px] border-violet-500 text-violet-300 hover:bg-violet-900/40 bg-transparent"
+              className="w-full sm:w-auto gap-3 text-base px-8 h-13 rounded-2xl sm:min-w-[220px] border-stone-700 text-stone-300 hover:bg-stone-800/60 bg-transparent"
             >
               <Phone className="w-5 h-5" />
               (647) 447-1115
@@ -93,7 +93,7 @@ export default function Contact({ onSendMessage }) {
         <motion.div {...fadeUp(0.32)}>
           <button
             onClick={onSendMessage}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 underline underline-offset-4 transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-stone-400 hover:text-stone-300 underline underline-offset-4 transition-colors duration-200"
           >
             <Send className="w-4 h-4" />
             Send a Message

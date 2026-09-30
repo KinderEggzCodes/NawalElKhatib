@@ -10,7 +10,7 @@ export default function ScrollPrompt({ label, targetId }) {
     <div className="flex justify-center pt-12 pb-4">
       <motion.button
         onClick={scrollTo}
-        className="group flex items-center gap-3 text-stone-400 hover:text-violet-600 transition-colors duration-300"
+        className="group flex items-center gap-3 text-stone-400 hover:text-stone-900 transition-colors duration-300"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -21,7 +21,7 @@ export default function ScrollPrompt({ label, targetId }) {
         <motion.span
           animate={{ x: [0, 5, 0] }}
           transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-          className="text-violet-500 group-hover:text-violet-600 transition-colors"
+          className="text-stone-800 group-hover:text-stone-900 transition-colors"
         >
           <ArrowRight className="w-4 h-4" />
         </motion.span>

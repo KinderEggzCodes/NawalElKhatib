@@ -70,8 +70,8 @@ export default function Leadership() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-10 bg-gradient-to-r from-violet-600 to-purple-500" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600">
+            <div className="h-px w-10 bg-stone-900" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-900">
               Leadership and Extracurriculars
             </span>
           </div>
@@ -87,16 +87,16 @@ export default function Leadership() {
         <div className="grid md:grid-cols-2 gap-6 mb-10">
           {LEADERSHIP.map((item, i) => (
             <motion.div key={i} {...cardAnim(i * 0.12)} className="h-full">
-              <div className="h-full bg-gradient-to-br from-violet-50/50 to-white border border-stone-200 rounded-2xl p-6 hover:shadow-lg hover:border-violet-200 hover:shadow-violet-100/50 transition-all duration-300 group flex flex-col">
+              <div className="h-full bg-gradient-to-br from-amber-50/50 to-white border border-stone-200 rounded-2xl p-6 hover:shadow-lg hover:border-stone-300 hover:shadow-stone-200/50 transition-all duration-300 group flex flex-col">
 
                 {/* Logo + header */}
                 <div className="flex items-start gap-3 mb-4">
                   <OrgLogo src={item.logo} initials={item.initials} alt={item.org} />
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-base font-black text-stone-900 group-hover:text-violet-700 transition-colors leading-tight">
+                    <h3 className="text-base font-black text-stone-900 group-hover:text-black transition-colors leading-tight">
                       {item.org}
                     </h3>
-                    <p className="text-xs font-semibold text-violet-600 mt-0.5">{item.role}</p>
+                    <p className="text-xs font-semibold text-stone-900 mt-0.5">{item.role}</p>
                     <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1.5">
                       <span className="flex items-center gap-1 text-[10px] text-stone-500 font-medium">
                         <Calendar className="w-2.5 h-2.5" />
@@ -115,7 +115,7 @@ export default function Leadership() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[10px] font-semibold text-violet-600 hover:text-violet-800 bg-violet-50 hover:bg-violet-100 border border-violet-200 px-2 py-0.5 rounded-full transition-colors duration-150"
+                          className="inline-flex items-center gap-1 text-[10px] font-semibold text-stone-900 hover:text-stone-800 bg-amber-50 hover:bg-stone-200 border border-stone-300 px-2 py-0.5 rounded-full transition-colors duration-150"
                         >
                           <ExternalLink className="w-2.5 h-2.5" />
                           {link.label}
@@ -131,7 +131,7 @@ export default function Leadership() {
                 <ul className="flex flex-col gap-2 flex-1">
                   {item.bullets.map((b, j) => (
                     <li key={j} className="flex items-start gap-2 text-xs text-stone-600 leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400 flex-shrink-0 mt-[5px]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-stone-400 flex-shrink-0 mt-[5px]" />
                       {b}
                     </li>
                   ))}
@@ -154,9 +154,9 @@ export default function Leadership() {
               <PlaceholderImage
                 label={p.label}
                 iconSize="md"
-                className="w-full h-44 rounded-2xl group-hover:border-violet-300 transition-colors duration-300"
+                className="w-full h-44 rounded-2xl group-hover:border-stone-300 transition-colors duration-300"
               />
-              <p className="text-xs font-semibold text-stone-500 text-center tracking-wide group-hover:text-violet-600 transition-colors">
+              <p className="text-xs font-semibold text-stone-500 text-center tracking-wide group-hover:text-stone-900 transition-colors">
                 {p.label}
               </p>
             </div>
@@ -178,7 +178,7 @@ function OrgLogo({ src, initials, alt }) {
 
   if (!src || errored) {
     return (
-      <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-violet-600 to-purple-500 flex items-center justify-center text-white text-[10px] font-black flex-shrink-0 shadow-sm">
+      <div className="w-9 h-9 rounded-lg bg-stone-900 flex items-center justify-center text-white text-[10px] font-black flex-shrink-0 shadow-sm">
         {initials}
       </div>
     )

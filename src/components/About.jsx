@@ -47,7 +47,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="bg-gradient-to-br from-white via-violet-50/20 to-purple-50/10"
+      className="bg-gradient-to-br from-white via-amber-50/20 to-amber-50/10"
     >
       {/* ── Full-bleed photo hero ── */}
       <div className="relative w-full overflow-hidden">
@@ -57,22 +57,8 @@ export default function About() {
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
         {/* Black transparent gradient — keeps text legible over the photo */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
-        {/* Melt the photo into the site background */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#fafaf9]" />
-
-        {/* Floating card — top right */}
-        <motion.div
-          className="absolute top-20 sm:top-24 right-4 sm:right-10 bg-gradient-to-br from-violet-600 to-purple-500 rounded-xl sm:rounded-2xl shadow-xl px-3 sm:px-4 py-1.5 sm:py-3"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.65, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p className="text-[7px] sm:text-[10px] text-violet-200 font-semibold uppercase tracking-widest mb-0">Available for</p>
-          <p className="text-[9px] sm:text-sm font-black text-white leading-tight">a Winter 2027 Term</p>
-        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/15 to-transparent" />
 
         {/* Hero text */}
         <div className="relative mx-auto flex min-h-[88vh] w-full max-w-7xl flex-col justify-end px-6 pb-32 pt-28 lg:px-10">
@@ -130,7 +116,7 @@ export default function About() {
                 Download Resume
               </Button>
             </a>
-            <Button variant="outline" size="lg" onClick={handleConnect} className="w-full sm:w-auto gap-2 border-white/70 text-white hover:bg-white/10 hover:text-white">
+            <Button size="lg" onClick={handleConnect} className="w-full sm:w-auto gap-2">
               Let's Connect
               <ArrowRight className="w-4 h-4" />
             </Button>
@@ -157,7 +143,7 @@ export default function About() {
 
       {/* ── Full-width hobby filmstrip ── */}
       <motion.div
-        className="overflow-hidden mt-0 sm:mt-6 bg-gray-900 py-5"
+        className="overflow-hidden mt-0 sm:mt-6 bg-stone-900 py-5"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
@@ -191,7 +177,7 @@ function SkillGroup({ title, skills, variant, mobileLimit }) {
 
   const pillClass =
     variant === 'purple'
-      ? 'bg-violet-50 text-violet-700 border border-violet-100'
+      ? 'bg-amber-50 text-black border border-stone-200'
       : 'bg-stone-100 text-stone-600 border border-stone-200'
 
   return (
@@ -211,7 +197,7 @@ function SkillGroup({ title, skills, variant, mobileLimit }) {
       </div>
       {mobileLimit && skills.length > mobileLimit && (
         <button
-          className="sm:hidden mt-2 text-[10px] font-semibold text-violet-500 hover:text-violet-700 transition-colors"
+          className="sm:hidden mt-2 text-[10px] font-semibold text-stone-800 hover:text-black transition-colors"
           onClick={() => setExpanded(!expanded)}
         >
           {expanded ? '▲ Show less' : `▼ +${skills.length - mobileLimit} more`}

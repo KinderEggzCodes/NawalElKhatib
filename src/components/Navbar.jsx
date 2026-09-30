@@ -50,7 +50,7 @@ export default function Navbar({ onLogoClick, onNavClick }) {
       className={[
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
-          ? 'bg-white/90 backdrop-blur-lg border-b border-stone-100 shadow-sm'
+          ? 'bg-[#f5f3ea]/90 backdrop-blur-lg border-b border-stone-100 shadow-sm'
           : 'bg-transparent',
       ].join(' ')}
       initial={{ y: -80 }}
@@ -64,7 +64,10 @@ export default function Navbar({ onLogoClick, onNavClick }) {
           <div className="flex items-center gap-3 flex-shrink-0">
             <button
               onClick={() => onLogoClick ? onLogoClick() : scrollTo('about')}
-              className="text-base font-black tracking-tight text-stone-900 hover:text-violet-600 transition-colors duration-200"
+              className={[
+                'font-display text-xl font-bold tracking-wide transition-colors duration-200',
+                scrolled ? 'text-stone-900 hover:text-stone-600' : 'text-white hover:text-white/80 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]',
+              ].join(' ')}
             >
               Nawal El Khatib
             </button>
@@ -80,12 +83,16 @@ export default function Navbar({ onLogoClick, onNavClick }) {
               <button
                 key={id}
                 onClick={() => handleNav(id)}
-                className="relative text-sm font-medium text-stone-600 hover:text-violet-600 transition-colors duration-200 group py-1"
+                className={[
+                  'relative text-sm font-medium transition-colors duration-200 group py-1',
+                  scrolled ? 'text-stone-950 hover:text-black' : 'text-white/90 hover:text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]',
+                ].join(' ')}
               >
                 {label}
                 <span
                   className={[
-                    'absolute -bottom-0.5 left-0 h-[2px] bg-gradient-to-r from-violet-600 to-purple-500 transition-all duration-300',
+                    'absolute -bottom-0.5 left-0 h-[2px] transition-all duration-300',
+                    scrolled ? 'bg-stone-900' : 'bg-white',
                     activeId === id ? 'w-full' : 'w-0 group-hover:w-full',
                   ].join(' ')}
                 />
@@ -95,7 +102,10 @@ export default function Navbar({ onLogoClick, onNavClick }) {
 
           {/* ── Mobile hamburger ── */}
           <button
-            className="md:hidden p-2 -mr-2 text-stone-600 hover:text-violet-600 transition-colors"
+            className={[
+              'md:hidden p-2 -mr-2 transition-colors',
+              scrolled ? 'text-stone-600 hover:text-stone-900' : 'text-white hover:text-white/80',
+            ].join(' ')}
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="Toggle menu"
           >
@@ -108,7 +118,7 @@ export default function Navbar({ onLogoClick, onNavClick }) {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="md:hidden bg-white border-t border-stone-100 shadow-lg"
+            className="md:hidden bg-[#f5f3ea] border-t border-stone-100 shadow-lg"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -123,7 +133,7 @@ export default function Navbar({ onLogoClick, onNavClick }) {
                 <button
                   key={id}
                   onClick={() => handleNav(id)}
-                  className="text-sm font-semibold text-stone-700 hover:text-violet-600 transition-colors text-left"
+                  className="text-sm font-semibold text-stone-700 hover:text-stone-900 transition-colors text-left"
                 >
                   {label}
                 </button>
