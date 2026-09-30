@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import About from './components/About'
 import Experience from './components/Experience'
@@ -7,26 +8,36 @@ import Contact from './components/Contact'
 import ContactPage from './pages/ContactPage'
 import UgcPage from './pages/UgcPage'
 
-export default function App() {
-  const [page, setPage] = useState('home')
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 
-  if (page === 'contact') {
-    return <ContactPage onBack={() => setPage('home')} />
-  }
-
-  if (page === 'ugc') {
-    return <UgcPage onBack={() => setPage('home')} onWorkWithMe={() => setPage('contact')} />
-  }
-
+function HomePage() {
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <Navbar onUgc={() => setPage('ugc')} />
+      <Navbar />
       <main>
         <About />
         <Experience />
         <Projects />
-        <Contact onSendMessage={() => setPage('contact')} />
+        <Contact />
       </main>
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/ugc" element={<UgcPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

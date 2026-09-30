@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, Send, CheckCircle2 } from 'lucide-react'
 import { Button } from '../components/ui/button'
@@ -16,8 +17,13 @@ const FIELDS = [
   { id: 'subject', label: 'Subject',      type: 'text',  placeholder: "What's this about?" },
 ]
 
-export default function ContactPage({ onBack }) {
+export default function ContactPage() {
   const [state, handleSubmit] = useForm('mredeaaq')
+  const navigate = useNavigate()
+  const location = useLocation()
+  const backTo = location.state?.from || '/'
+  const backLabel = backTo === '/ugc' ? 'Back to UGC' : 'Back to Portfolio'
+  const goBack = () => navigate(backTo)
 
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
@@ -28,11 +34,11 @@ export default function ContactPage({ onBack }) {
       <header className="fixed top-0 left-0 right-0 z-50 bg-stone-900/90 backdrop-blur-lg border-b border-stone-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <button
-            onClick={onBack}
+            onClick={goBack}
             className="flex items-center gap-2 text-sm font-semibold text-stone-300 hover:text-stone-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Portfolio
+            {backLabel}
           </button>
           <span className="text-base font-black text-white">
             Nawal <span className="gradient-text-light">El Khatib</span>
@@ -46,7 +52,7 @@ export default function ContactPage({ onBack }) {
         <div className="max-w-xl mx-auto">
 
           {state.succeeded ? (
-            <SuccessState onBack={onBack} />
+            <SuccessState />
           ) : (
             <>
               {/* Headline */}
@@ -165,7 +171,11 @@ export default function ContactPage({ onBack }) {
   )
 }
 
-function SuccessState({ onBack }) {
+function SuccessState() {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const backTo = location.state?.from || '/'
+  const backLabel = backTo === '/ugc' ? 'Back to UGC' : 'Back to Portfolio'
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.92 }}
@@ -180,9 +190,9 @@ function SuccessState({ onBack }) {
       <p className="text-stone-400 text-base mb-8 leading-relaxed">
         Thanks for reaching out. I'll get back to you shortly.
       </p>
-      <Button onClick={onBack} variant="outline" className="gap-2 border-stone-700 text-stone-300 hover:bg-stone-800/60 bg-transparent">
+      <Button onClick={() => navigate(backTo)} variant="outline" className="gap-2 border-stone-700 text-stone-300 hover:bg-stone-800/60 bg-transparent">
         <ArrowLeft className="w-4 h-4" />
-        Back to Portfolio
+        {backLabel}
       </Button>
     </motion.div>
   )

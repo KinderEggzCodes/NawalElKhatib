@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
@@ -13,7 +14,8 @@ function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
-export default function Navbar({ onLogoClick, onNavClick, onUgc }) {
+export default function Navbar({ onLogoClick, onNavClick }) {
+  const navigate = useNavigate()
   const [scrolled,  setScrolled]  = useState(false)
   const [menuOpen,  setMenuOpen]  = useState(false)
   const [activeId,  setActiveId]  = useState('about')
@@ -98,9 +100,9 @@ export default function Navbar({ onLogoClick, onNavClick, onUgc }) {
                 />
               </button>
             ))}
-            {onUgc && (
+            {true && (
               <button
-                onClick={() => onUgc()}
+                onClick={() => navigate('/ugc')}
                 className={[
                   'relative text-sm font-medium transition-colors duration-200 group py-1',
                   scrolled ? 'text-stone-950 hover:text-black' : 'text-white/90 hover:text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]',
@@ -155,9 +157,9 @@ export default function Navbar({ onLogoClick, onNavClick, onUgc }) {
                   {label}
                 </button>
               ))}
-              {onUgc && (
+              {true && (
                 <button
-                  onClick={() => { setMenuOpen(false); onUgc() }}
+                  onClick={() => { setMenuOpen(false); navigate('/ugc') }}
                   className="text-sm font-semibold text-stone-700 hover:text-stone-900 transition-colors text-left"
                 >
                   UGC

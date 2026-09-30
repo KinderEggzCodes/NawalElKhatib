@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { Linkedin, MapPin, Phone, Send } from 'lucide-react'
 import { Button } from './ui/button'
 
@@ -9,7 +10,8 @@ const fadeUp = (delay = 0) => ({
   transition:  { duration: 0.72, ease: [0.22, 1, 0.36, 1], delay },
 })
 
-export default function Contact({ onSendMessage }) {
+export default function Contact() {
+  const navigate = useNavigate()
   return (
     <section id="contact" className="bg-stone-900 py-32">
       <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
@@ -92,7 +94,7 @@ export default function Contact({ onSendMessage }) {
         {/* Send a Message CTA */}
         <motion.div {...fadeUp(0.32)}>
           <button
-            onClick={onSendMessage}
+            onClick={() => navigate('/contact')}
             className="inline-flex items-center gap-2 text-sm font-semibold text-stone-400 hover:text-stone-300 underline underline-offset-4 transition-colors duration-200"
           >
             <Send className="w-4 h-4" />

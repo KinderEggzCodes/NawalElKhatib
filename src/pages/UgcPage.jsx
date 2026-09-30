@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   ArrowLeft, ArrowRight, ArrowUpRight, Sparkles, Clapperboard, Camera,
@@ -51,7 +52,10 @@ function Eyebrow({ children, light = false }) {
   )
 }
 
-export default function UgcPage({ onBack, onWorkWithMe }) {
+export default function UgcPage() {
+  const navigate = useNavigate()
+  const goBack = () => navigate('/')
+  const workWithMe = () => navigate('/contact', { state: { from: '/ugc' } })
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   const scrollToWork = () =>
@@ -64,7 +68,7 @@ export default function UgcPage({ onBack, onWorkWithMe }) {
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#f5f3ea]/90 backdrop-blur-lg border-b border-stone-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <button
-            onClick={onBack}
+            onClick={goBack}
             className="flex items-center gap-2 text-sm font-semibold text-stone-600 hover:text-stone-900 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -74,7 +78,7 @@ export default function UgcPage({ onBack, onWorkWithMe }) {
             Nawal <span className="gradient-text">El Khatib</span>
           </span>
           <button
-            onClick={onWorkWithMe}
+            onClick={workWithMe}
             className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold bg-stone-900 text-white px-5 py-2.5 rounded-full hover:bg-black transition-colors"
           >
             Work With Me
@@ -114,7 +118,7 @@ export default function UgcPage({ onBack, onWorkWithMe }) {
             </motion.p>
             <motion.div {...fadeUp(0.22)} className="flex flex-col sm:flex-row gap-3">
               <button
-                onClick={onWorkWithMe}
+                onClick={workWithMe}
                 className="inline-flex items-center justify-center gap-2 bg-stone-900 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-black transition-colors"
               >
                 Work With Me
@@ -369,7 +373,7 @@ export default function UgcPage({ onBack, onWorkWithMe }) {
           </motion.p>
           <motion.div {...fadeUp(0.2)}>
             <button
-              onClick={onWorkWithMe}
+              onClick={workWithMe}
               className="inline-flex items-center gap-2 bg-white text-stone-900 font-bold px-10 py-4 rounded-full hover:bg-stone-200 transition-colors"
             >
               Get My Rate Card
@@ -384,7 +388,7 @@ export default function UgcPage({ onBack, onWorkWithMe }) {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-stone-400">© 2026 Nawal El Khatib — UGC Creator</p>
           <button
-            onClick={onBack}
+            onClick={goBack}
             className="inline-flex items-center gap-2 text-sm font-semibold text-stone-300 hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
