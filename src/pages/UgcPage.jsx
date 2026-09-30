@@ -93,13 +93,13 @@ export default function UgcPage() {
       </header>
 
       {/* ── Hero: full-bleed photo with a light black gradient ── */}
-      {/* Full-bleed photo hero. Phones get a portrait crop (ugc-hero-mobile.jpg) so the
+      {/* Full-bleed photo hero. Phones get a portrait crop (ugc-hero-phone.jpg) so the
           photo fills the screen without zooming in; desktops get the wide shot. */}
       <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-stone-950">
         <picture>
           <source media="(min-width: 1024px)" srcSet="/ugc-hero-bg.jpg" />
           <img
-            src="/ugc-hero-mobile.jpg"
+            src="/ugc-hero-phone.jpg"
             alt="Nawal El Khatib"
             className="absolute inset-0 w-full h-full object-cover"
           />
