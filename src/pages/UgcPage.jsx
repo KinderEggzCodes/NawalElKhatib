@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
@@ -55,6 +55,12 @@ function Eyebrow({ children, light = false }) {
 export default function UgcPage() {
   const navigate = useNavigate()
   const goBack = () => navigate('/')
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
   const workWithMe = () => navigate('/contact', { state: { from: '/ugc' } })
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
@@ -65,17 +71,26 @@ export default function UgcPage() {
     <div className="min-h-screen bg-[#f5f3ea] text-stone-900 overflow-x-hidden">
 
       {/* ── Minimal header ── */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#f5f3ea]/90 backdrop-blur-lg border-b border-stone-200">
+      <header className={[
+        'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+        scrolled ? 'bg-[#f5f3ea]/90 backdrop-blur-lg border-b border-stone-200' : 'bg-transparent border-b border-transparent',
+      ].join(' ')}>
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <button
             onClick={goBack}
-            className="flex items-center gap-2 text-sm font-semibold text-stone-600 hover:text-stone-900 transition-colors"
+            className={[
+              'flex items-center gap-2 text-sm font-semibold transition-colors',
+              scrolled ? 'text-stone-600 hover:text-stone-900' : 'text-white/90 hover:text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]',
+            ].join(' ')}
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Portfolio
           </button>
-          <span className="text-base font-black tracking-tight">
-            Nawal <span className="gradient-text">El Khatib</span>
+          <span className={[
+            'text-base font-black tracking-tight transition-colors',
+            scrolled ? 'text-stone-900' : 'text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]',
+          ].join(' ')}>
+            Nawal <span className={scrolled ? 'gradient-text' : ''}>El Khatib</span>
           </span>
           <button
             onClick={workWithMe}
@@ -88,68 +103,65 @@ export default function UgcPage() {
         </div>
       </header>
 
-      {/* ── Hero ── */}
-      <section className="pt-32 sm:pt-40 pb-16 sm:pb-24 px-6 lg:px-10">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
-            <motion.div {...fadeUp(0)}>
-              <Eyebrow>User-Generated Content Creator - Toronto</Eyebrow>
-            </motion.div>
-            <motion.h1
-              {...fadeUp(0.06)}
-              className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] mb-6"
-            >
-              Real content for brands people <span className="gradient-text">trust.</span>
-            </motion.h1>
-            <motion.p
-              {...fadeUp(0.12)}
-              className="text-base sm:text-lg text-stone-600 leading-relaxed mb-4 max-w-lg"
-            >
-              I'm Nawal, a Toronto-based UGC creator just getting started, and I'm
-              looking for my first brand partners.
-            </motion.p>
-            <motion.p
-              {...fadeUp(0.16)}
-              className="text-base sm:text-lg text-stone-600 leading-relaxed mb-8 max-w-lg"
-            >
-              Authentic, scroll-stopping videos and photos made for TikTok, Reels,
-              and paid ads. No stiff scripts, no fake energy. Just content that
-              feels like it came from a friend.
-            </motion.p>
-            <motion.div {...fadeUp(0.22)} className="flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={workWithMe}
-                className="inline-flex items-center justify-center gap-2 bg-stone-900 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-black transition-colors"
-              >
-                Work With Me
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button
-                onClick={scrollToWork}
-                className="inline-flex items-center justify-center gap-2 border-2 border-stone-900 text-stone-900 font-semibold px-8 py-3.5 rounded-full hover:bg-stone-900 hover:text-white transition-colors"
-              >
-                <Play className="w-4 h-4" />
-                See My Work
-              </button>
-            </motion.div>
-          </div>
-
-          <motion.div {...fadeUp(0.15)} className="relative mx-auto w-full max-w-sm">
-            <div className="absolute -inset-3 bg-stone-900/5 rounded-[2rem] rotate-3" />
-            <div className="relative rounded-[2rem] w-full aspect-[4/5] overflow-hidden shadow-2xl -rotate-2">
-              <img
-                src="/ugc-hero.jpg"
-                alt="Nawal El Khatib"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-            </div>
-            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
-              <span className="inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full shadow-lg">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
-                Open for collaborations
+      {/* ── Hero: full-bleed photo with a light black gradient ── */}
+      <section className="relative min-h-[100svh] flex items-center overflow-hidden">
+        <img
+          src="/ugc-hero-bg.jpg"
+          alt="Nawal El Khatib"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-36 pb-24">
+          <motion.div {...fadeUp(0)}>
+            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full mb-8">
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+              Open for collaborations
+            </span>
+          </motion.div>
+          <motion.div {...fadeUp(0.05)}>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-10 bg-white/70" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/80 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]">
+                User-Generated Content Creator - Toronto
               </span>
             </div>
+          </motion.div>
+          <motion.h1
+            {...fadeUp(0.1)}
+            className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] mb-6 text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)] max-w-3xl"
+          >
+            Real content for brands people <em className="italic">trust.</em>
+          </motion.h1>
+          <motion.p
+            {...fadeUp(0.15)}
+            className="text-base sm:text-lg text-white/85 leading-relaxed mb-4 max-w-lg [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
+          >
+            I'm Nawal, a Toronto-based UGC creator just getting started, and I'm
+            looking for my first brand partners.
+          </motion.p>
+          <motion.p
+            {...fadeUp(0.19)}
+            className="text-base sm:text-lg text-white/85 leading-relaxed mb-8 max-w-lg [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
+          >
+            Authentic, scroll-stopping videos and photos made for TikTok, Reels,
+            and paid ads. No stiff scripts, no fake energy. Just content that
+            feels like it came from a friend.
+          </motion.p>
+          <motion.div {...fadeUp(0.24)} className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={workWithMe}
+              className="inline-flex items-center justify-center gap-2 bg-stone-900 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-black transition-colors"
+            >
+              Work With Me
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={scrollToWork}
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/70 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white hover:text-stone-900 transition-colors"
+            >
+              <Play className="w-4 h-4" />
+              See My Work
+            </button>
           </motion.div>
         </div>
       </section>
