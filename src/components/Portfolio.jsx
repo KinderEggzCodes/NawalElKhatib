@@ -52,11 +52,11 @@ export default function Portfolio() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-10 bg-orange-500" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-orange-600">
+            <div className="h-px w-10 bg-stone-900" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-900">
               Featured Work
             </span>
-            <div className="h-px w-10 bg-orange-500" />
+            <div className="h-px w-10 bg-stone-900" />
           </div>
           <h2 className="text-4xl sm:text-5xl font-black text-stone-900 tracking-tight">
             My Portfolio
@@ -89,13 +89,13 @@ function ProjectCard({ project }) {
   return (
     <motion.article
       variants={card}
-      className="group flex flex-col bg-white rounded-3xl border border-stone-200 overflow-hidden hover:shadow-xl hover:border-orange-200 transition-all duration-400 ease-out hover:-translate-y-1"
+      className="group flex flex-col bg-white rounded-3xl border border-stone-200 overflow-hidden hover:shadow-xl hover:border-stone-300 transition-all duration-400 ease-out hover:-translate-y-1"
     >
       {/* Image placeholder */}
       <PlaceholderImage
         label="Project screenshot"
         iconSize="md"
-        className="h-52 rounded-none border-0 border-b border-stone-200 group-hover:border-orange-100 transition-colors"
+        className="h-52 rounded-none border-0 border-b border-stone-200 group-hover:border-stone-200 transition-colors"
       />
 
       {/* Content */}
@@ -106,7 +106,7 @@ function ProjectCard({ project }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-orange-50 text-orange-600 border border-orange-100"
+              className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-stone-900 border border-stone-200"
             >
               {tag}
             </span>
@@ -114,7 +114,7 @@ function ProjectCard({ project }) {
         </div>
 
         <div className="flex-1">
-          <h3 className="text-lg font-black text-stone-900 mb-2 group-hover:text-orange-700 transition-colors">
+          <h3 className="text-lg font-black text-stone-900 mb-2 group-hover:text-black transition-colors">
             {project.title}
           </h3>
           <p className="text-sm text-stone-500 leading-relaxed">

@@ -170,7 +170,7 @@ export default function Experience() {
   const [tab, setTab] = useState('work')
 
   return (
-    <section id="experience" className="bg-slate-50 pt-8 sm:pt-14 pb-8 sm:pb-10">
+    <section id="experience" className="bg-[#f0ebdd] pt-8 sm:pt-14 pb-8 sm:pb-10">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* Section header */}
@@ -182,8 +182,8 @@ export default function Experience() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-10 bg-gradient-to-r from-violet-600 to-purple-500" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600">
+            <div className="h-px w-10 bg-stone-900" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-900">
               My Journey
             </span>
           </div>
@@ -191,7 +191,7 @@ export default function Experience() {
             <span className="relative inline-block">
               <span className="relative z-10 gradient-text">Experience</span>
               <motion.span
-                className="absolute -bottom-1 left-0 right-0 h-3 bg-violet-100 rounded-full -z-0"
+                className="absolute -bottom-1 left-0 right-0 h-3 bg-stone-200 rounded-full -z-0"
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -247,8 +247,8 @@ function TabButton({ active, onClick, children }) {
       className={[
         'flex-1 sm:flex-none px-4 sm:px-8 py-2.5 sm:py-3.5 rounded-xl text-sm sm:text-base font-bold transition-all duration-200',
         active
-          ? 'bg-gradient-to-r from-violet-600 to-purple-500 text-white shadow-sm'
-          : 'text-stone-500 hover:text-violet-600',
+          ? 'bg-stone-900 text-white shadow-sm'
+          : 'text-stone-500 hover:text-stone-900',
       ].join(' ')}
     >
       {children}
@@ -288,15 +288,15 @@ function LeadershipTab() {
       <div className="grid md:grid-cols-2 gap-6 mb-10">
         {LEADERSHIP.map((item, i) => (
           <motion.div key={i} {...cardAnim(i * 0.12)} className="h-full">
-            <div className="h-full bg-gradient-to-br from-violet-50/50 to-white border border-stone-200 rounded-2xl p-4 sm:p-6 hover:shadow-lg hover:border-violet-200 hover:shadow-violet-100/50 transition-all duration-300 group flex flex-col">
+            <div className="h-full bg-gradient-to-br from-amber-50/50 to-white border border-stone-200 rounded-2xl p-4 sm:p-6 hover:shadow-lg hover:border-stone-300 hover:shadow-stone-200/50 transition-all duration-300 group flex flex-col">
 
               <div className="flex items-start gap-3 mb-4">
                 <OrgLogo src={item.logo} initials={item.initials} alt={item.org} />
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base font-black text-stone-900 group-hover:text-violet-700 transition-colors leading-tight">
+                  <h3 className="text-base font-black text-stone-900 group-hover:text-black transition-colors leading-tight">
                     {item.org}
                   </h3>
-                  <p className="text-xs font-semibold text-violet-600 mt-0.5">{item.role}</p>
+                  <p className="text-xs font-semibold text-stone-900 mt-0.5">{item.role}</p>
                   <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1.5">
                     <span className="flex items-center gap-1 text-[10px] text-stone-500 font-medium">
                       <Calendar className="w-2.5 h-2.5" />
@@ -314,7 +314,7 @@ function LeadershipTab() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[10px] font-semibold text-violet-600 hover:text-violet-800 bg-violet-50 hover:bg-violet-100 border border-violet-200 px-2 py-0.5 rounded-full transition-colors duration-150"
+                        className="inline-flex items-center gap-1 text-[10px] font-semibold text-stone-900 hover:text-stone-800 bg-amber-50 hover:bg-stone-200 border border-stone-300 px-2 py-0.5 rounded-full transition-colors duration-150"
                       >
                         <ExternalLink className="w-2.5 h-2.5" />
                         {link.label}
@@ -329,7 +329,7 @@ function LeadershipTab() {
               <ul className="flex flex-col gap-2 flex-1">
                 {item.bullets.map((b, j) => (
                   <li key={j} className="flex items-start gap-2 text-[13px] text-stone-600 leading-relaxed">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-400 flex-shrink-0 mt-[5px]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-stone-400 flex-shrink-0 mt-[5px]" />
                     {b}
                   </li>
                 ))}
@@ -365,22 +365,22 @@ function SnakeCurve({ direction }) {
       {direction === 'right' ? (
         <>
           <div
-            className="absolute top-0 right-0 h-full border-r-2 border-b-2 border-violet-200 rounded-br-[28px]"
+            className="absolute top-0 right-0 h-full border-r-2 border-b-2 border-stone-300 rounded-br-[28px]"
             style={{ width: 'calc(50% + 1px)' }}
           />
           <div
-            className="absolute bottom-0 left-0 border-b-2 border-violet-200"
+            className="absolute bottom-0 left-0 border-b-2 border-stone-300"
             style={{ width: 'calc(50%)' }}
           />
         </>
       ) : (
         <>
           <div
-            className="absolute top-0 left-0 h-full border-l-2 border-b-2 border-violet-200 rounded-bl-[28px]"
+            className="absolute top-0 left-0 h-full border-l-2 border-b-2 border-stone-300 rounded-bl-[28px]"
             style={{ width: 'calc(50% + 1px)' }}
           />
           <div
-            className="absolute bottom-0 right-0 border-b-2 border-violet-200"
+            className="absolute bottom-0 right-0 border-b-2 border-stone-300"
             style={{ width: 'calc(50%)' }}
           />
         </>
@@ -400,16 +400,16 @@ function ExperienceCard({ exp, delay = 0 }) {
       transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay }}
       className="h-full"
     >
-      <div className="h-full bg-white border border-stone-200 rounded-2xl p-3 sm:p-5 hover:shadow-lg hover:border-violet-200 hover:shadow-violet-100/50 transition-all duration-300 group flex flex-col">
+      <div className="h-full bg-white border border-stone-200 rounded-2xl p-3 sm:p-5 hover:shadow-lg hover:border-stone-300 hover:shadow-stone-200/50 transition-all duration-300 group flex flex-col">
 
         <div className="flex flex-col gap-1.5 sm:gap-3 mb-2 sm:mb-4">
           <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
             <CompanyLogo src={exp.logo} initials={exp.initials} alt={exp.company} />
             <div className="min-w-0">
-              <h3 className="text-[10px] sm:text-sm font-black text-stone-900 group-hover:text-violet-700 transition-colors leading-tight">
+              <h3 className="text-[10px] sm:text-sm font-black text-stone-900 group-hover:text-black transition-colors leading-tight">
                 {exp.company}
               </h3>
-              <p className="text-[9px] sm:text-xs font-semibold text-violet-600 mt-0.5 leading-tight">{exp.role}</p>
+              <p className="text-[9px] sm:text-xs font-semibold text-stone-900 mt-0.5 leading-tight">{exp.role}</p>
             </div>
           </div>
           <div className="flex flex-row flex-wrap gap-x-2 gap-y-0.5">
@@ -429,7 +429,7 @@ function ExperienceCard({ exp, delay = 0 }) {
         <ul className="flex flex-col gap-1 sm:gap-2 flex-1">
           {exp.bullets.map((b, j) => (
             <li key={j} className="flex items-start gap-1.5 sm:gap-2 text-[10px] sm:text-[13px] text-stone-600 leading-relaxed">
-              <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-violet-400 flex-shrink-0 mt-[4px] sm:mt-[5px]" />
+              <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-stone-400 flex-shrink-0 mt-[4px] sm:mt-[5px]" />
               {b}
             </li>
           ))}
@@ -446,7 +446,7 @@ function CompanyLogo({ src, initials, alt }) {
 
   if (!src || errored) {
     return (
-      <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-violet-600 to-purple-500 flex items-center justify-center text-white text-[7px] sm:text-[10px] font-black flex-shrink-0 shadow-sm">
+      <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-lg bg-stone-900 flex items-center justify-center text-white text-[7px] sm:text-[10px] font-black flex-shrink-0 shadow-sm">
         {initials}
       </div>
     )
@@ -469,7 +469,7 @@ function OrgLogo({ src, initials, alt }) {
 
   if (!src || errored) {
     return (
-      <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-violet-600 to-purple-500 flex items-center justify-center text-white text-[7px] sm:text-[10px] font-black flex-shrink-0 shadow-sm">
+      <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-lg bg-stone-900 flex items-center justify-center text-white text-[7px] sm:text-[10px] font-black flex-shrink-0 shadow-sm">
         {initials}
       </div>
     )

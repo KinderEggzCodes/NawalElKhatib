@@ -6,10 +6,10 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default:   'bg-gradient-to-r from-violet-600 to-purple-500 text-white border border-transparent',
+        default:   'bg-stone-900 text-white border border-transparent',
         secondary: 'bg-stone-100 text-stone-600 border border-transparent',
         outline:   'border border-stone-300 text-stone-700 bg-transparent',
-        purple:    'bg-violet-50 text-violet-700 border border-violet-200',
+        purple:    'bg-amber-50 text-black border border-stone-300',
         stone:     'bg-stone-100 text-stone-600 border border-stone-200',
         green:     'bg-emerald-50 text-emerald-700 border border-emerald-200',
       },

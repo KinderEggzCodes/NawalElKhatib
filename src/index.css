@@ -11,14 +11,18 @@
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #fafaf9;
+    background-color: #f5f3ea;
     color: #1c1917;
     overflow-x: hidden;
   }
 
+  h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
   ::selection {
-    background-color: #ede9fe;
-    color: #5b21b6;
+    background-color: #e5ddc9;
+    color: #1c1917;
   }
 
   * {
@@ -31,9 +35,17 @@
     text-wrap: balance;
   }
 
-  /* Purple gradient text — use as a className alongside font utilities */
+  /* Charcoal gradient text — use as a className alongside font utilities */
   .gradient-text {
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    background: linear-gradient(135deg, #1c1917, #57534e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Cream gradient text — for dark backgrounds */
+  .gradient-text-light {
+    background: linear-gradient(135deg, #faf8f2, #d9d2c0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -41,13 +53,13 @@
 
   /* Gradient border helper — wrap target in this, add bg-white inside */
   .gradient-border {
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    background: linear-gradient(135deg, #1c1917, #57534e);
     padding: 2px;
     border-radius: 9999px;
   }
 
-  /* Purple glow shadow */
+  /* Dark glow shadow */
   .shadow-purple-glow {
-    box-shadow: 0 0 60px -10px rgba(124, 58, 237, 0.35);
+    box-shadow: 0 0 60px -10px rgba(28, 25, 23, 0.3);
   }
 }

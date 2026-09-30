@@ -47,7 +47,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-screen pt-16 pb-4 bg-gradient-to-br from-white via-violet-50/20 to-purple-50/10"
+      className="min-h-screen pt-16 pb-4 bg-gradient-to-br from-white via-amber-50/20 to-amber-50/10"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-6 pb-4 sm:pt-6 sm:pb-20">
         <div className="grid grid-cols-2 gap-3 sm:gap-14 lg:gap-20 items-start sm:items-stretch">
@@ -68,13 +68,13 @@ export default function About() {
             {/* Subheadline */}
             <motion.div {...fadeUp(0.12)} className="flex flex-col gap-1 sm:gap-1.5">
               <div className="flex items-start gap-1 sm:gap-2 text-stone-600">
-                <Library className="w-3 h-3 sm:w-4 sm:h-4 text-violet-500 flex-shrink-0 mt-0.5" />
+                <Library className="w-3 h-3 sm:w-4 sm:h-4 text-stone-800 flex-shrink-0 mt-0.5" />
                 <p className="text-[10px] sm:text-base font-semibold tracking-wide">
                   Business Technology<br className="sm:hidden" />Management Co-Op Student
                 </p>
               </div>
               <div className="flex items-start gap-1 sm:gap-2 text-stone-500">
-                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-violet-400 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-stone-400 flex-shrink-0 mt-0.5" />
                 <p className="text-[9px] sm:text-sm font-medium tracking-wide">
                   Toronto Metropolitan University<br />
                   <span className="text-stone-400 font-normal">(Previously known as: Ryerson University)</span>
@@ -129,13 +129,13 @@ export default function About() {
 
               {/* Floating card — top right */}
               <motion.div
-                className="absolute -top-2 sm:-top-5 -right-1 sm:-right-5 bg-gradient-to-br from-violet-600 to-purple-500 rounded-xl sm:rounded-2xl shadow-xl px-2 sm:px-4 py-1.5 sm:py-3"
+                className="absolute -top-2 sm:-top-5 -right-1 sm:-right-5 bg-stone-900 rounded-xl sm:rounded-2xl shadow-xl px-2 sm:px-4 py-1.5 sm:py-3"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.65, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
-                <p className="text-[7px] sm:text-[10px] text-violet-200 font-semibold uppercase tracking-widest mb-0">Available for</p>
+                <p className="text-[7px] sm:text-[10px] text-stone-300 font-semibold uppercase tracking-widest mb-0">Available for</p>
                 <p className="text-[9px] sm:text-sm font-black text-white leading-tight">a Winter 2027 Term</p>
               </motion.div>
             </div>
@@ -201,7 +201,7 @@ function ProfilePhoto() {
   const [errored, setErrored] = useState(false)
 
   return errored ? (
-    <div className="w-36 h-44 sm:w-72 sm:h-full lg:w-[360px] rounded-[12px] bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center">
+    <div className="w-36 h-44 sm:w-72 sm:h-full lg:w-[360px] rounded-[12px] bg-gradient-to-br from-stone-200 to-stone-200 flex items-center justify-center">
       <span className="text-3xl sm:text-6xl font-black gradient-text">NE</span>
     </div>
   ) : (
@@ -231,7 +231,7 @@ function SkillGroup({ title, skills, variant, mobileLimit }) {
 
   const pillClass =
     variant === 'purple'
-      ? 'bg-violet-50 text-violet-700 border border-violet-100'
+      ? 'bg-amber-50 text-black border border-stone-200'
       : 'bg-stone-100 text-stone-600 border border-stone-200'
 
   return (
@@ -251,7 +251,7 @@ function SkillGroup({ title, skills, variant, mobileLimit }) {
       </div>
       {mobileLimit && skills.length > mobileLimit && (
         <button
-          className="sm:hidden mt-2 text-[10px] font-semibold text-violet-500 hover:text-violet-700 transition-colors"
+          className="sm:hidden mt-2 text-[10px] font-semibold text-stone-800 hover:text-black transition-colors"
           onClick={() => setExpanded(!expanded)}
         >
           {expanded ? '▲ Show less' : `▼ +${skills.length - mobileLimit} more`}
