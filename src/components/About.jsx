@@ -98,7 +98,7 @@ export default function About() {
             {/* CTA buttons — hidden on mobile */}
             <motion.div {...fadeUp(0.24)} className="hidden sm:flex flex-col sm:flex-row flex-wrap gap-3">
               <a
-                href="/Nawal%20ElKhatib's%20Resume.pdf"
+                href="/Nawal_El_Khatibs_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto"
@@ -148,7 +148,7 @@ export default function About() {
           className="flex sm:hidden flex-col gap-3 mt-4"
         >
           <a
-            href="/Nawal%20ElKhatib's%20Resume.pdf"
+            href="/Nawal_El_Khatibs_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full"
