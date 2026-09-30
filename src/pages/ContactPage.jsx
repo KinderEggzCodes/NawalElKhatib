@@ -22,14 +22,14 @@ export default function ContactPage({ onBack }) {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-stone-900">
 
       {/* ── Minimal header ── */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-lg border-b border-gray-700 shadow-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-stone-900/90 backdrop-blur-lg border-b border-stone-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-stone-400 transition-colors"
+            className="flex items-center gap-2 text-sm font-semibold text-stone-300 hover:text-stone-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Portfolio
@@ -61,7 +61,7 @@ export default function ContactPage({ onBack }) {
                 <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white mb-3">
                   Send a <span className="gradient-text-light">Message</span>
                 </h1>
-                <p className="text-gray-400 text-base leading-relaxed">
+                <p className="text-stone-400 text-base leading-relaxed">
                   Fill out the form below and I'll get back to you as soon as possible.
                 </p>
               </motion.div>
@@ -69,13 +69,13 @@ export default function ContactPage({ onBack }) {
               {/* Form card */}
               <motion.div
                 {...fadeUp(0.1)}
-                className="bg-gray-800 rounded-3xl border border-gray-700 shadow-lg shadow-black/30 p-8"
+                className="bg-stone-800 rounded-3xl border border-stone-700 shadow-lg shadow-black/30 p-8"
               >
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
                   {FIELDS.map(({ id, label, type, placeholder }, i) => (
                     <motion.div key={id} {...fadeUp(0.12 + i * 0.06)}>
-                      <label htmlFor={id} className="block text-sm font-semibold text-gray-200 mb-1.5">
+                      <label htmlFor={id} className="block text-sm font-semibold text-stone-200 mb-1.5">
                         {label}
                       </label>
                       <input
@@ -85,8 +85,8 @@ export default function ContactPage({ onBack }) {
                         required
                         placeholder={placeholder}
                         className={[
-                          'w-full px-4 py-3 rounded-xl border border-gray-600 bg-gray-700',
-                          'text-sm text-white placeholder-gray-500',
+                          'w-full px-4 py-3 rounded-xl border border-stone-600 bg-stone-700',
+                          'text-sm text-white placeholder-stone-500',
                           'outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-800/30',
                           'transition-all duration-200',
                         ].join(' ')}
@@ -102,7 +102,7 @@ export default function ContactPage({ onBack }) {
 
                   {/* Message */}
                   <motion.div {...fadeUp(0.30)}>
-                    <label htmlFor="message" className="block text-sm font-semibold text-gray-200 mb-1.5">
+                    <label htmlFor="message" className="block text-sm font-semibold text-stone-200 mb-1.5">
                       Message
                     </label>
                     <textarea
@@ -112,8 +112,8 @@ export default function ContactPage({ onBack }) {
                       rows={5}
                       placeholder="Tell me about your project, role, or just say hi..."
                       className={[
-                        'w-full px-4 py-3 rounded-xl border border-gray-600 bg-gray-700',
-                        'text-sm text-white placeholder-gray-500 resize-none',
+                        'w-full px-4 py-3 rounded-xl border border-stone-600 bg-stone-700',
+                        'text-sm text-white placeholder-stone-500 resize-none',
                         'outline-none focus:border-stone-400 focus:ring-2 focus:ring-stone-800/30',
                         'transition-all duration-200',
                       ].join(' ')}
@@ -137,7 +137,7 @@ export default function ContactPage({ onBack }) {
                         'hover:bg-black',
                         'shadow-sm hover:shadow-md hover:shadow-stone-900/50',
                         'active:scale-[0.98] transition-all duration-200',
-                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-800 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-800',
+                        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-800 focus-visible:ring-offset-2 focus-visible:ring-offset-stone-800',
                         'disabled:opacity-70 disabled:cursor-not-allowed',
                         'flex items-center justify-center gap-2',
                       ].join(' ')}
@@ -177,10 +177,10 @@ function SuccessState({ onBack }) {
         <CheckCircle2 className="w-10 h-10 text-white" />
       </div>
       <h2 className="text-3xl font-black text-white mb-3">Message sent!</h2>
-      <p className="text-gray-400 text-base mb-8 leading-relaxed">
+      <p className="text-stone-400 text-base mb-8 leading-relaxed">
         Thanks for reaching out. I'll get back to you shortly.
       </p>
-      <Button onClick={onBack} variant="outline" className="gap-2 border-stone-800 text-stone-300 hover:bg-stone-900/40 bg-transparent">
+      <Button onClick={onBack} variant="outline" className="gap-2 border-stone-700 text-stone-300 hover:bg-stone-800/60 bg-transparent">
         <ArrowLeft className="w-4 h-4" />
         Back to Portfolio
       </Button>
