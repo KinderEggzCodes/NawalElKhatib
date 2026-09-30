@@ -93,7 +93,7 @@ export default function UgcPage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <motion.div {...fadeUp(0)}>
-              <Eyebrow>UGC Creator · Toronto</Eyebrow>
+              <Eyebrow>User-Generated Content Creator - Toronto</Eyebrow>
             </motion.div>
             <motion.h1
               {...fadeUp(0.06)}
@@ -136,11 +136,14 @@ export default function UgcPage() {
 
           <motion.div {...fadeUp(0.15)} className="relative mx-auto w-full max-w-sm">
             <div className="absolute -inset-3 bg-stone-900/5 rounded-[2rem] rotate-3" />
-            <img
-              src="/hero.jpg"
-              alt="Nawal El Khatib"
-              className="relative rounded-[2rem] w-full aspect-[4/5] object-cover shadow-2xl -rotate-2"
-            />
+            <div className="relative rounded-[2rem] w-full aspect-[4/5] overflow-hidden shadow-2xl -rotate-2">
+              <img
+                src="/ugc-hero.jpg"
+                alt="Nawal El Khatib"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+            </div>
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap">
               <span className="inline-flex items-center gap-2 bg-stone-900 text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full shadow-lg">
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
