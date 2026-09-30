@@ -11,7 +11,7 @@ const fadeUp = (delay = 0) => ({
 
 export default function Contact({ onSendMessage }) {
   return (
-    <section id="contact" className="bg-gray-900 py-32">
+    <section id="contact" className="bg-stone-900 py-32">
       <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
 
         {/* Eyebrow */}
@@ -81,7 +81,7 @@ export default function Contact({ onSendMessage }) {
             <Button
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto gap-3 text-base px-8 h-13 rounded-2xl sm:min-w-[220px] border-stone-800 text-stone-300 hover:bg-stone-900/40 bg-transparent"
+              className="w-full sm:w-auto gap-3 text-base px-8 h-13 rounded-2xl sm:min-w-[220px] border-stone-700 text-stone-300 hover:bg-stone-800/60 bg-transparent"
             >
               <Phone className="w-5 h-5" />
               (647) 447-1115

@@ -116,7 +116,7 @@ export default function About() {
                 Download Resume
               </Button>
             </a>
-            <Button variant="outline" size="lg" onClick={handleConnect} className="w-full sm:w-auto gap-2 border-white/70 text-white hover:bg-white/10 hover:text-white">
+            <Button size="lg" onClick={handleConnect} className="w-full sm:w-auto gap-2">
               Let's Connect
               <ArrowRight className="w-4 h-4" />
             </Button>
@@ -143,7 +143,7 @@ export default function About() {
 
       {/* ── Full-width hobby filmstrip ── */}
       <motion.div
-        className="overflow-hidden mt-0 sm:mt-6 bg-gray-900 py-5"
+        className="overflow-hidden mt-0 sm:mt-6 bg-stone-900 py-5"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-60px' }}
