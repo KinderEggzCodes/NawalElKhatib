@@ -11,7 +11,7 @@ const EXPERIENCES = [
     role:     'Brand Marketing Intern',
     period:   'Sep 2026 to Present',
     location: 'Mississauga, ON',
-    logo:     '/aircanada.png',
+    logo:     '/aircanada.svg',
     initials: 'AC',
     bullets: [
       'Execute integrated marketing campaigns for Air Canada and Aeroplan, building brand strategy skills',
