@@ -136,7 +136,7 @@ export default function About() {
                 transition={{ delay: 0.65, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
                 <p className="text-[7px] sm:text-[10px] text-violet-200 font-semibold uppercase tracking-widest mb-0">Available for</p>
-                <p className="text-[9px] sm:text-sm font-black text-white leading-tight">Fall 2026 +<br className="sm:hidden" />Winter 2027</p>
+                <p className="text-[9px] sm:text-sm font-black text-white leading-tight">a Winter 2027 Term</p>
               </motion.div>
             </div>
           </motion.div>

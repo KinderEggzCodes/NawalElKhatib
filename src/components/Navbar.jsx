@@ -68,8 +68,8 @@ export default function Navbar({ onLogoClick, onNavClick }) {
             >
               Nawal El Khatib
             </button>
-            <span className="hidden sm:flex items-center gap-1.5 bg-emerald-50 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded-full border border-emerald-200">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="hidden sm:flex items-center gap-1.5 bg-yellow-50 text-yellow-800 text-[11px] font-bold px-2.5 py-1 rounded-full border border-yellow-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
               Available January 2027
             </span>
           </div>
@@ -116,8 +116,8 @@ export default function Navbar({ onLogoClick, onNavClick }) {
           >
             <div className="px-6 py-5 flex flex-col gap-5">
               <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-bold text-emerald-700">Available January 2027</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
+                <span className="text-xs font-bold text-yellow-800">Available January 2027</span>
               </div>
               {NAV_LINKS.map(({ label, id }) => (
                 <button
