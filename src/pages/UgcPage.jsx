@@ -114,7 +114,7 @@ export default function UgcPage() {
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-36 pb-24">
           <motion.div {...fadeUp(0)}>
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               Open for collaborations
             </span>
           </motion.div>
