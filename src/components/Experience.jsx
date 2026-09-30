@@ -170,7 +170,7 @@ export default function Experience() {
   const [tab, setTab] = useState('work')
 
   return (
-    <section id="experience" className="bg-[#f0ebdd] pt-8 sm:pt-14 pb-8 sm:pb-10">
+    <section id="experience" className="bg-[#f0ebdd] pt-8 sm:pt-14 pb-8 sm:pb-10 scroll-mt-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10">
 
         {/* Section header */}

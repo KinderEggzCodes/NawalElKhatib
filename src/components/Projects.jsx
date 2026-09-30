@@ -73,7 +73,7 @@ const cardAnim = (delay = 0) => ({
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-gradient-to-br from-amber-50/20 to-white pt-6 pb-24">
+    <section id="projects" className="bg-gradient-to-br from-amber-50/20 to-white pt-6 pb-24 scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
         {/* Section header */}
