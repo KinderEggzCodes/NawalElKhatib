@@ -93,16 +93,19 @@ export default function UgcPage() {
       </header>
 
       {/* ── Hero: full-bleed photo with a light black gradient ── */}
-      {/* On phones the photo shows full-width at its natural ratio (no zoom/crop);
-          text sits below it on dark. Desktop keeps the full-bleed overlay. */}
-      <section className="relative overflow-hidden bg-stone-950 lg:min-h-[100svh] lg:flex lg:items-center">
-        <img
-          src="/ugc-hero-bg.jpg"
-          alt="Nawal El Khatib"
-          className="block w-full h-auto lg:absolute lg:inset-0 lg:h-full lg:object-cover"
-        />
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
-        <div className="relative max-w-7xl mx-auto px-6 py-10 sm:py-12 lg:py-0 lg:px-10 w-full lg:pt-36 lg:pb-24">
+      {/* Full-bleed photo hero. Phones get a portrait crop (ugc-hero-mobile.jpg) so the
+          photo fills the screen without zooming in; desktops get the wide shot. */}
+      <section className="relative min-h-[100svh] flex items-center overflow-hidden bg-stone-950">
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/ugc-hero-bg.jpg" />
+          <img
+            src="/ugc-hero-mobile.jpg"
+            alt="Nawal El Khatib"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-36 pb-24">
           <motion.div {...fadeUp(0)}>
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />

@@ -50,20 +50,23 @@ export default function About() {
       className="bg-gradient-to-br from-white via-amber-50/20 to-amber-50/10"
     >
       {/* ── Full-bleed photo hero ── */}
-      {/* On phones the photo shows full-width at its natural ratio (no zoom/crop);
-          text sits below it on dark. Desktop keeps the full-bleed overlay. */}
+      {/* Full-bleed photo hero. Phones get a portrait crop (hero-mobile.jpg) so the
+          photo fills the screen without zooming in; desktops get the wide shot. */}
       <div className="relative w-full overflow-hidden bg-stone-950">
-        <img
-          src="/hero.jpg"
-          alt="Nawal El Khatib"
-          className="block h-auto w-full lg:absolute lg:inset-0 lg:h-full lg:object-cover lg:object-center"
-        />
-        {/* Black transparent gradient - keeps text legible over the photo (desktop only) */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/60 via-black/15 to-transparent" />
+        <picture>
+          <source media="(min-width: 1024px)" srcSet="/hero.jpg" />
+          <img
+            src="/hero-mobile.jpg"
+            alt="Nawal El Khatib"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
+        {/* Black transparent gradient - keeps text legible over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/15 to-transparent" />
 
         {/* Hero text */}
-        <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-end px-6 py-10 sm:py-12 lg:min-h-[88vh] lg:pb-32 lg:pt-28 lg:px-10">
+        <div className="relative mx-auto flex min-h-[88vh] w-full max-w-7xl flex-col justify-end px-6 pb-32 pt-28 lg:px-10">
 
           {/* Headline */}
           <motion.h1
