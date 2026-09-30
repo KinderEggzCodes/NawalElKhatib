@@ -47,124 +47,101 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-screen pt-16 pb-4 bg-gradient-to-br from-white via-amber-50/20 to-amber-50/10"
+      className="bg-gradient-to-br from-white via-amber-50/20 to-amber-50/10"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-6 pb-4 sm:pt-6 sm:pb-20">
-        <div className="grid grid-cols-2 gap-3 sm:gap-14 lg:gap-20 items-start sm:items-stretch">
+      {/* ── Full-bleed photo hero ── */}
+      <div className="relative w-full overflow-hidden">
+        <img
+          src="/hero.jpg"
+          alt="Nawal El Khatib"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+        {/* Black transparent gradient — keeps text legible over the photo */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+        {/* Melt the photo into the site background */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
 
-          {/* ── LEFT: text ── */}
-          <div className="flex flex-col gap-2 sm:gap-8">
-
-            {/* Headline */}
-            <motion.h1
-              {...fadeUp(0.04)}
-              className="text-2xl sm:text-6xl lg:text-8xl font-black text-stone-900 leading-[1.0] tracking-tight"
-            >
-              Nawal
-              <br />
-              <span className="gradient-text">El Khatib</span>
-            </motion.h1>
-
-            {/* Subheadline */}
-            <motion.div {...fadeUp(0.12)} className="flex flex-col gap-1 sm:gap-1.5">
-              <div className="flex items-start gap-1 sm:gap-2 text-stone-600">
-                <Library className="w-3 h-3 sm:w-4 sm:h-4 text-stone-800 flex-shrink-0 mt-0.5" />
-                <p className="text-[10px] sm:text-base font-semibold tracking-wide">
-                  Business Technology<br className="sm:hidden" />Management Co-Op Student
-                </p>
-              </div>
-              <div className="flex items-start gap-1 sm:gap-2 text-stone-500">
-                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-stone-400 flex-shrink-0 mt-0.5" />
-                <p className="text-[9px] sm:text-sm font-medium tracking-wide">
-                  Toronto Metropolitan University<br />
-                  <span className="text-stone-400 font-normal">(Previously known as: Ryerson University)</span>
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Bio — hidden on mobile */}
-            <motion.p
-              {...fadeUp(0.18)}
-              className="hidden sm:block text-[15px] text-stone-600 leading-[1.8]"
-            >
-              Driven by a passion for the intersection of business and technology, I
-              actively seek diverse experiences across industries to identify where I can
-              make the greatest impact. With hands-on expertise in marketing, data
-              analysis, conference leadership, and lead generation, I bring a strong drive
-              toward automation and AI-driven solutions. Outside of work and academics, I
-              enjoy snowboarding, bouldering, hiking, and staying active.
-            </motion.p>
-
-            {/* CTA buttons — hidden on mobile */}
-            <motion.div {...fadeUp(0.24)} className="hidden sm:flex flex-col sm:flex-row flex-wrap gap-3">
-              <a
-                href="/Nawal%20ElKhatib's%20Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
-                <Button size="lg" className="w-full sm:w-auto gap-2">
-                  <Download className="w-4 h-4" />
-                  Download Resume
-                </Button>
-              </a>
-              <Button variant="outline" size="lg" onClick={handleConnect} className="w-full sm:w-auto gap-2">
-                Let's Connect
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </motion.div>
-
-          </div>
-
-          {/* ── RIGHT: profile photo ── */}
-          <motion.div
-            className="flex justify-end items-start sm:items-stretch"
-            initial={{ opacity: 0, scale: 0.88 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="relative sm:h-full">
-              <ProfilePhoto />
-
-              {/* Floating card — top right */}
-              <motion.div
-                className="absolute -top-2 sm:-top-5 -right-1 sm:-right-5 bg-stone-900 rounded-xl sm:rounded-2xl shadow-xl px-2 sm:px-4 py-1.5 sm:py-3"
-                initial={{ opacity: 0, y: -20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.65, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <p className="text-[7px] sm:text-[10px] text-stone-300 font-semibold uppercase tracking-widest mb-0">Available for</p>
-                <p className="text-[9px] sm:text-sm font-black text-white leading-tight">a Winter 2027 Term</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* ── Mobile-only CTA buttons (below the hero grid) ── */}
+        {/* Floating card — top right */}
         <motion.div
-          {...fadeUp(0.28)}
-          className="flex sm:hidden flex-col gap-3 mt-4"
+          className="absolute top-20 sm:top-24 right-4 sm:right-10 bg-stone-900 rounded-xl sm:rounded-2xl shadow-xl px-3 sm:px-4 py-1.5 sm:py-3"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.65, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         >
-          <a
-            href="/Nawal%20ElKhatib's%20Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full"
-          >
-            <Button size="lg" className="w-full gap-2">
-              <Download className="w-4 h-4" />
-              Download Resume
-            </Button>
-          </a>
-          <Button variant="outline" size="lg" onClick={handleConnect} className="w-full gap-2">
-            Let's Connect
-            <ArrowRight className="w-4 h-4" />
-          </Button>
+          <p className="text-[7px] sm:text-[10px] text-stone-400 font-semibold uppercase tracking-widest mb-0">Available for</p>
+          <p className="text-[9px] sm:text-sm font-black text-white leading-tight">a Winter 2027 Term</p>
         </motion.div>
 
-        {/* ── Skills — full-width below the grid ── */}
+        {/* Hero text */}
+        <div className="relative mx-auto flex min-h-[88vh] w-full max-w-7xl flex-col justify-end px-6 pb-32 pt-28 lg:px-10">
+
+          {/* Headline */}
+          <motion.h1
+            {...fadeUp(0.04)}
+            className="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-[1.0] tracking-tight text-shadow-hero"
+          >
+            Nawal
+            <br />
+            El Khatib
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.div {...fadeUp(0.12)} className="mt-4 sm:mt-6 flex flex-col gap-1 sm:gap-1.5">
+            <div className="flex items-start gap-1 sm:gap-2">
+              <Library className="w-3 h-3 sm:w-4 sm:h-4 text-white/80 flex-shrink-0 mt-0.5" />
+              <p className="text-[10px] sm:text-base font-semibold tracking-wide text-white text-shadow-hero-sm">
+                Business Technology<br className="sm:hidden" />Management Co-Op Student
+              </p>
+            </div>
+            <div className="flex items-start gap-1 sm:gap-2">
+              <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-white/70 flex-shrink-0 mt-0.5" />
+              <p className="text-[9px] sm:text-sm font-medium tracking-wide text-white/90 text-shadow-hero-sm">
+                Toronto Metropolitan University<br />
+                <span className="text-white/60 font-normal">(Previously known as: Ryerson University)</span>
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Bio — hidden on mobile */}
+          <motion.p
+            {...fadeUp(0.18)}
+            className="hidden sm:block mt-4 max-w-2xl text-[15px] text-white/85 leading-[1.8] text-shadow-hero-sm"
+          >
+            Driven by a passion for the intersection of business and technology, I
+            actively seek diverse experiences across industries to identify where I can
+            make the greatest impact. With hands-on expertise in marketing, data
+            analysis, conference leadership, and lead generation, I bring a strong drive
+            toward automation and AI-driven solutions. Outside of work and academics, I
+            enjoy snowboarding, bouldering, hiking, and staying active.
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div {...fadeUp(0.24)} className="mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
+            <a
+              href="/Nawal_El_Khatibs_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto"
+            >
+              <Button size="lg" className="w-full sm:w-auto gap-2">
+                <Download className="w-4 h-4" />
+                Download Resume
+              </Button>
+            </a>
+            <Button variant="outline" size="lg" onClick={handleConnect} className="w-full sm:w-auto gap-2 border-white/70 text-white hover:bg-white/10 hover:text-white">
+              Let's Connect
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </motion.div>
+
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-6 pb-4 sm:pt-6 sm:pb-20">
+        {/* ── Skills — full-width below the hero ── */}
+
         <motion.div
           {...fadeUp(0.30)}
           className="mt-6 sm:mt-12 pt-6 sm:pt-8 border-t border-stone-200"
@@ -194,23 +171,6 @@ export default function About() {
 
       <ScrollPrompt label="Experience" targetId="experience" />
     </section>
-  )
-}
-
-function ProfilePhoto() {
-  const [errored, setErrored] = useState(false)
-
-  return errored ? (
-    <div className="w-36 h-44 sm:w-72 sm:h-full lg:w-[360px] rounded-[12px] bg-gradient-to-br from-stone-200 to-stone-200 flex items-center justify-center">
-      <span className="text-3xl sm:text-6xl font-black gradient-text">NE</span>
-    </div>
-  ) : (
-    <img
-      src="/nawal.jpg"
-      alt="Nawal El Khatib"
-      onError={() => setErrored(true)}
-      className="w-36 h-44 sm:w-72 sm:h-full lg:w-[360px] rounded-[12px] object-cover object-top block"
-    />
   )
 }
 
