@@ -193,7 +193,7 @@ function ProjectCard({ project }) {
           </ul>
         </div>
 
-        {/* Embedded social stats — B2B card only */}
+        {/* Embedded social stats - B2B card only */}
         {project.showStats && <MiniStatsBanner />}
       </div>
     </article>

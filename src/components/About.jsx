@@ -56,7 +56,7 @@ export default function About() {
           alt="Nawal El Khatib"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        {/* Black transparent gradient — keeps text legible over the photo */}
+        {/* Black transparent gradient - keeps text legible over the photo */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/15 to-transparent" />
 
@@ -90,7 +90,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Bio — hidden on mobile */}
+          {/* Bio - hidden on mobile */}
           <motion.p
             {...fadeUp(0.18)}
             className="hidden sm:block mt-4 max-w-2xl text-[15px] text-white/85 leading-[1.8] text-shadow-hero-sm"
@@ -126,7 +126,7 @@ export default function About() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-6 pb-4 sm:pt-6 sm:pb-20">
-        {/* ── Skills — full-width below the hero ── */}
+        {/* ── Skills - full-width below the hero ── */}
 
         <motion.div
           {...fadeUp(0.30)}

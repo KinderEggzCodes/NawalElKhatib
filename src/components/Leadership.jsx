@@ -171,7 +171,7 @@ export default function Leadership() {
   )
 }
 
-// ─── Org logo — same pattern as CompanyLogo in Experience ────────────────────
+// ─── Org logo - same pattern as CompanyLogo in Experience ────────────────────
 
 function OrgLogo({ src, initials, alt }) {
   const [errored, setErrored] = useState(false)

@@ -35,7 +35,7 @@
     text-wrap: balance;
   }
 
-  /* Charcoal gradient text — use as a className alongside font utilities */
+  /* Charcoal gradient text - use as a className alongside font utilities */
   .gradient-text {
     background: linear-gradient(135deg, #1c1917, #57534e);
     -webkit-background-clip: text;
@@ -43,7 +43,7 @@
     background-clip: text;
   }
 
-  /* Cream gradient text — for dark backgrounds */
+  /* Cream gradient text - for dark backgrounds */
   .gradient-text-light {
     background: linear-gradient(135deg, #faf8f2, #d9d2c0);
     -webkit-background-clip: text;
@@ -51,7 +51,7 @@
     background-clip: text;
   }
 
-  /* Gradient border helper — wrap target in this, add bg-white inside */
+  /* Gradient border helper - wrap target in this, add bg-white inside */
   .gradient-border {
     background: linear-gradient(135deg, #1c1917, #57534e);
     padding: 2px;
@@ -63,7 +63,7 @@
     box-shadow: 0 0 60px -10px rgba(28, 25, 23, 0.3);
   }
 
-  /* Text shadow — keeps hero text legible over the full-bleed photo */
+  /* Text shadow - keeps hero text legible over the full-bleed photo */
   .text-shadow-hero {
     text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.65);
   }

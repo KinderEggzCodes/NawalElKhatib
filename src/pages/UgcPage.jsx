@@ -28,7 +28,7 @@ const SERVICES = [
 
 const STEPS = [
   { n: '01', title: 'You send the brief', desc: 'Tell me about your product, your audience, and the vibe you are going for. The looser the brief, the more room for creativity.' },
-  { n: '02', title: 'I create & film',    desc: 'I script, shoot, and edit your content in my own authentic style — the kind people actually watch.' },
+  { n: '02', title: 'I create & film',    desc: 'I script, shoot, and edit your content in my own authentic style, the kind people actually watch.' },
   { n: '03', title: 'You post & convert', desc: 'You get polished, ready-to-post content with full usage rights. Then we watch it work.' },
 ]
 
@@ -93,7 +93,7 @@ export default function UgcPage() {
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
             <motion.div {...fadeUp(0)}>
-              <Eyebrow>UGC Creator — Toronto</Eyebrow>
+              <Eyebrow>UGC Creator · Toronto</Eyebrow>
             </motion.div>
             <motion.h1
               {...fadeUp(0.06)}
@@ -105,7 +105,7 @@ export default function UgcPage() {
               {...fadeUp(0.12)}
               className="text-base sm:text-lg text-stone-600 leading-relaxed mb-4 max-w-lg"
             >
-              I'm Nawal, a Toronto-based UGC creator just getting started — and I'm
+              I'm Nawal, a Toronto-based UGC creator just getting started, and I'm
               looking for my first brand partners.
             </motion.p>
             <motion.p
@@ -113,7 +113,7 @@ export default function UgcPage() {
               className="text-base sm:text-lg text-stone-600 leading-relaxed mb-8 max-w-lg"
             >
               Authentic, scroll-stopping videos and photos made for TikTok, Reels,
-              and paid ads. No stiff scripts, no fake energy — just content that
+              and paid ads. No stiff scripts, no fake energy. Just content that
               feels like it came from a friend.
             </motion.p>
             <motion.div {...fadeUp(0.22)} className="flex flex-col sm:flex-row gap-3">
@@ -176,7 +176,7 @@ export default function UgcPage() {
             <motion.div {...fadeUp(0.12)} className="space-y-4 text-stone-600 leading-relaxed max-w-lg">
               <p>
                 I'm starting my UGC journey with fresh eyes and a marketer's brain.
-                By day I work in brand marketing — so I don't just film pretty
+                By day I work in brand marketing, so I don't just film pretty
                 videos, I think about who is watching and what makes them buy.
               </p>
               <p>
@@ -188,7 +188,7 @@ export default function UgcPage() {
           <div className="flex flex-col gap-4 justify-center">
             {[
               { icon: HeartHandshake, title: 'Authentic on camera', desc: 'Natural delivery that feels like a recommendation from a friend.' },
-              { icon: Zap,            title: 'Quick turnaround',   desc: 'Brief to final cut in days, not weeks — without cutting corners.' },
+              { icon: Zap,            title: 'Quick turnaround',   desc: 'Brief to final cut in days, not weeks, without cutting corners.' },
               { icon: BadgeCheck,     title: 'Strategy-minded',    desc: 'A marketing background means your content is built to convert.' },
             ].map(({ icon: Icon, title, desc }, i) => (
               <motion.div
@@ -223,7 +223,7 @@ export default function UgcPage() {
             My <span className="gradient-text">Work</span>
           </motion.h2>
           <motion.p {...fadeUp(0.1)} className="text-center text-stone-600 max-w-md mx-auto mb-12">
-            Fresh page, fresh start — this is where my brand collaborations will
+            Fresh page, fresh start. This is where my brand collaborations will
             live. Check back soon.
           </motion.p>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -255,7 +255,7 @@ export default function UgcPage() {
           </motion.h2>
           <motion.p {...fadeUp(0.1)} className="text-stone-600 max-w-xl mb-12">
             Available in organic and paid ad style. Every project is quoted
-            individually — tell me what you need.
+            individually. Tell me what you need.
           </motion.p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {SERVICES.map(({ icon: Icon, title, desc }, i) => (
@@ -290,7 +290,7 @@ export default function UgcPage() {
             The first three seconds decide everything. Every video package includes
             three different opening hooks, so you can test them against each other
             and find the one your audience can't scroll past. You get three videos
-            for barely more effort than one — a win for both of us.
+            for barely more effort than one, a win for both of us.
           </motion.p>
         </div>
       </section>
@@ -346,7 +346,7 @@ export default function UgcPage() {
                   ))}
                 </div>
                 <p className="text-stone-500 text-sm leading-relaxed">
-                  Your brand's kind words could be here — let's make something worth raving about.
+                  Your brand's kind words could be here. Let's make something worth raving about.
                 </p>
               </motion.div>
             ))}
@@ -386,7 +386,7 @@ export default function UgcPage() {
       {/* ── Footer ── */}
       <footer className="bg-stone-900 text-white border-t border-stone-800 px-6 lg:px-10 py-8">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-stone-400">© 2026 Nawal El Khatib — UGC Creator</p>
+          <p className="text-sm text-stone-400">© 2026 Nawal El Khatib · UGC Creator</p>
           <button
             onClick={goBack}
             className="inline-flex items-center gap-2 text-sm font-semibold text-stone-300 hover:text-white transition-colors"
