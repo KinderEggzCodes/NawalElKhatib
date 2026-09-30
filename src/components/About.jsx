@@ -59,20 +59,6 @@ export default function About() {
         {/* Black transparent gradient — keeps text legible over the photo */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
-        {/* Melt the photo into the site background */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
-
-        {/* Floating card — top right */}
-        <motion.div
-          className="absolute top-20 sm:top-24 right-4 sm:right-10 bg-stone-900 rounded-xl sm:rounded-2xl shadow-xl px-3 sm:px-4 py-1.5 sm:py-3"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.65, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <p className="text-[7px] sm:text-[10px] text-stone-400 font-semibold uppercase tracking-widest mb-0">Available for</p>
-          <p className="text-[9px] sm:text-sm font-black text-white leading-tight">a Winter 2027 Term</p>
-        </motion.div>
 
         {/* Hero text */}
         <div className="relative mx-auto flex min-h-[88vh] w-full max-w-7xl flex-col justify-end px-6 pb-32 pt-28 lg:px-10">
