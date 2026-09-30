@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
-  ArrowLeft, ArrowRight, ArrowUpRight, Sparkles, Clapperboard, Camera,
+  ArrowRight, ArrowUpRight, Sparkles, Clapperboard, Camera,
   PackageOpen, MessageSquareHeart, Mic, Wand2, ShoppingBag, Play,
   BadgeCheck, Zap, HeartHandshake, Star,
 } from 'lucide-react'
@@ -54,7 +54,6 @@ function Eyebrow({ children, light = false }) {
 
 export default function UgcPage() {
   const navigate = useNavigate()
-  const goBack = () => navigate('/')
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -76,16 +75,6 @@ export default function UgcPage() {
         scrolled ? 'bg-[#f5f3ea]/90 backdrop-blur-lg border-b border-stone-200' : 'bg-transparent border-b border-transparent',
       ].join(' ')}>
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-          <button
-            onClick={goBack}
-            className={[
-              'flex items-center gap-2 text-sm font-semibold transition-colors',
-              scrolled ? 'text-stone-600 hover:text-stone-900' : 'text-white/90 hover:text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]',
-            ].join(' ')}
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Portfolio
-          </button>
           <span className={[
             'text-base font-black tracking-tight transition-colors',
             scrolled ? 'text-stone-900' : 'text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]',
@@ -400,15 +389,8 @@ export default function UgcPage() {
 
       {/* ── Footer ── */}
       <footer className="bg-stone-900 text-white border-t border-stone-800 px-6 lg:px-10 py-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-center">
           <p className="text-sm text-stone-400">© 2026 Nawal El Khatib · UGC Creator</p>
-          <button
-            onClick={goBack}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-stone-300 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Portfolio
-          </button>
         </div>
       </footer>
     </div>
