@@ -93,14 +93,16 @@ export default function UgcPage() {
       </header>
 
       {/* ── Hero: full-bleed photo with a light black gradient ── */}
-      <section className="relative min-h-[100svh] flex items-center overflow-hidden">
+      {/* On phones the photo shows full-width at its natural ratio (no zoom/crop);
+          text sits below it on dark. Desktop keeps the full-bleed overlay. */}
+      <section className="relative overflow-hidden bg-stone-950 lg:min-h-[100svh] lg:flex lg:items-center">
         <img
           src="/ugc-hero-bg.jpg"
           alt="Nawal El Khatib"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="block w-full h-auto lg:absolute lg:inset-0 lg:h-full lg:object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-36 pb-24">
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-6 py-10 sm:py-12 lg:py-0 lg:px-10 w-full lg:pt-36 lg:pb-24">
           <motion.div {...fadeUp(0)}>
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -235,7 +237,7 @@ export default function UgcPage() {
               <motion.div
                 key={i}
                 {...fadeUp(0.05 + i * 0.05)}
-                className="group relative aspect-[3/4] rounded-2xl border-2 border-dashed border-stone-300 bg-stone-100/60 flex flex-col items-center justify-center gap-3 p-6 text-center hover:border-stone-500 transition-colors"
+                className="group relative aspect-[9/16] rounded-2xl border-2 border-dashed border-stone-300 bg-stone-100/60 flex flex-col items-center justify-center gap-3 p-6 text-center hover:border-stone-500 transition-colors"
               >
                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-stone-900 text-white px-3 py-1 rounded-full">
                   {niche}
