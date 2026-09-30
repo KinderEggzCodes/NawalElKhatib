@@ -5,6 +5,7 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import ContactPage from './pages/ContactPage'
+import UgcPage from './pages/UgcPage'
 
 export default function App() {
   const [page, setPage] = useState('home')
@@ -13,9 +14,13 @@ export default function App() {
     return <ContactPage onBack={() => setPage('home')} />
   }
 
+  if (page === 'ugc') {
+    return <UgcPage onBack={() => setPage('home')} onWorkWithMe={() => setPage('contact')} />
+  }
+
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <Navbar />
+      <Navbar onUgc={() => setPage('ugc')} />
       <main>
         <About />
         <Experience />

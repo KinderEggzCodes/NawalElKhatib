@@ -13,7 +13,7 @@ function scrollTo(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
-export default function Navbar({ onLogoClick, onNavClick }) {
+export default function Navbar({ onLogoClick, onNavClick, onUgc }) {
   const [scrolled,  setScrolled]  = useState(false)
   const [menuOpen,  setMenuOpen]  = useState(false)
   const [activeId,  setActiveId]  = useState('about')
@@ -98,6 +98,23 @@ export default function Navbar({ onLogoClick, onNavClick }) {
                 />
               </button>
             ))}
+            {onUgc && (
+              <button
+                onClick={() => onUgc()}
+                className={[
+                  'relative text-sm font-medium transition-colors duration-200 group py-1',
+                  scrolled ? 'text-stone-950 hover:text-black' : 'text-white/90 hover:text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]',
+                ].join(' ')}
+              >
+                UGC
+                <span
+                  className={[
+                    'absolute -bottom-0.5 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300',
+                    scrolled ? 'bg-stone-900' : 'bg-white',
+                  ].join(' ')}
+                />
+              </button>
+            )}
           </nav>
 
           {/* ── Mobile hamburger ── */}
@@ -138,6 +155,14 @@ export default function Navbar({ onLogoClick, onNavClick }) {
                   {label}
                 </button>
               ))}
+              {onUgc && (
+                <button
+                  onClick={() => { setMenuOpen(false); onUgc() }}
+                  className="text-sm font-semibold text-stone-700 hover:text-stone-900 transition-colors text-left"
+                >
+                  UGC
+                </button>
+              )}
             </div>
           </motion.div>
         )}
