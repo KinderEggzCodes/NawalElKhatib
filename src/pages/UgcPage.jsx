@@ -106,9 +106,9 @@ export default function UgcPage() {
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-24 pb-16 lg:pt-36 lg:pb-24">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-20 pb-10 lg:pt-36 lg:pb-24">
           <motion.div {...fadeUp(0)}>
-            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full mb-8">
+            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               Open for collaborations
             </span>
@@ -123,20 +123,20 @@ export default function UgcPage() {
           </motion.div>
           <motion.h1
             {...fadeUp(0.1)}
-            className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] mb-6 text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)] max-w-3xl"
+            className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] mb-5 text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)] max-w-3xl"
           >
             Real content for brands people <em className="italic">trust.</em>
           </motion.h1>
           <motion.p
             {...fadeUp(0.15)}
-            className="text-base sm:text-lg text-white/85 leading-relaxed mb-4 max-w-lg [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
+            className="text-[15px] sm:text-lg text-white/85 leading-relaxed mb-4 max-w-lg [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
           >
             I'm Nawal, a Toronto-based UGC creator just getting started, and I'm
             looking for my first brand partners.
           </motion.p>
           <motion.p
             {...fadeUp(0.19)}
-            className="text-base sm:text-lg text-white/85 leading-relaxed mb-8 max-w-lg [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
+            className="text-[15px] sm:text-lg text-white/85 leading-relaxed mb-6 max-w-lg [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]"
           >
             Authentic, scroll-stopping videos and photos made for TikTok, Reels,
             and paid ads. No stiff scripts, no fake energy. Just content that
@@ -145,14 +145,14 @@ export default function UgcPage() {
           <motion.div {...fadeUp(0.24)} className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={workWithMe}
-              className="inline-flex items-center justify-center gap-2 bg-stone-900 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-black transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-stone-900 text-white font-semibold px-8 py-3 rounded-full hover:bg-black transition-colors"
             >
               Work With Me
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={scrollToWork}
-              className="inline-flex items-center justify-center gap-2 border-2 border-white/70 text-white font-semibold px-8 py-3.5 rounded-full hover:bg-white hover:text-stone-900 transition-colors"
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/70 text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-stone-900 transition-colors"
             >
               <Play className="w-4 h-4" />
               See My Work
