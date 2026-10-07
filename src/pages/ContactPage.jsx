@@ -17,11 +17,14 @@ const FIELDS = [
   { id: 'subject', label: 'Subject',      type: 'text',  placeholder: "What's this about?" },
 ]
 
+const MAIN_FORM_ID = 'mredeaaq'   // main portfolio site -> owner's inbox
+const UGC_FORM_ID = 'maeqqbyo'     // UGC page -> ugc@nawalelkhatib.ca
+
 export default function ContactPage() {
-  const [state, handleSubmit] = useForm('mredeaaq')
   const navigate = useNavigate()
   const location = useLocation()
   const backTo = location.state?.from || '/'
+  const [state, handleSubmit] = useForm(backTo === '/ugc' ? UGC_FORM_ID : MAIN_FORM_ID)
   const backLabel = backTo === '/ugc' ? 'Back to UGC' : 'Back to Portfolio'
   const goBack = () => navigate(backTo)
 
