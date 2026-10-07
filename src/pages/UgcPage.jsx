@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import {
   ArrowRight, ArrowUpRight, Sparkles, Clapperboard, Camera,
   PackageOpen, MessageSquareHeart, Mic, Wand2, ShoppingBag,
-  BadgeCheck, Zap, HeartHandshake, Star,
+  BadgeCheck, Zap, HeartHandshake,
 } from 'lucide-react'
 
 const fadeUp = (delay = 0) => ({
@@ -308,40 +308,6 @@ export default function UgcPage() {
                 <span className="font-display text-6xl font-black text-stone-200">{n}</span>
                 <h3 className="font-bold text-xl mt-2 mb-2">{title}</h3>
                 <p className="text-sm text-stone-600 leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Testimonials (placeholder) ── */}
-      <section className="py-20 sm:py-28 px-6 lg:px-10 bg-white/40">
-        <div className="max-w-7xl mx-auto">
-          <motion.div {...fadeUp(0)} className="text-center mb-4">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-px w-10 bg-stone-900" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-900">Kind words</span>
-              <div className="h-px w-10 bg-stone-900" />
-            </div>
-          </motion.div>
-          <motion.h2 {...fadeUp(0.06)} className="text-4xl sm:text-5xl font-black tracking-tight text-center mb-12">
-            Love <span className="gradient-text">notes</span>
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={i}
-                {...fadeUp(0.06 + i * 0.08)}
-                className="border-2 border-dashed border-stone-300 rounded-2xl p-8 text-center flex flex-col items-center gap-3"
-              >
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, s) => (
-                    <Star key={s} className="w-4 h-4 text-stone-300" />
-                  ))}
-                </div>
-                <p className="text-stone-500 text-sm leading-relaxed">
-                  Your brand's kind words could be here. Let's make something worth raving about.
-                </p>
               </motion.div>
             ))}
           </div>
