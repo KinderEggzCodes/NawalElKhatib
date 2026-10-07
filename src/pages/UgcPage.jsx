@@ -106,7 +106,7 @@ export default function UgcPage() {
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-20 pb-10 lg:pt-36 lg:pb-24">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 w-full pt-16 min-[400px]:pt-20 pb-10 lg:pt-36 lg:pb-24">
           <motion.div {...fadeUp(0)}>
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/25 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -123,7 +123,7 @@ export default function UgcPage() {
           </motion.div>
           <motion.h1
             {...fadeUp(0.1)}
-            className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] mb-5 text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)] max-w-3xl"
+            className="text-[32px] min-[400px]:text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.02] mb-5 text-white [text-shadow:0_2px_20px_rgba(0,0,0,0.55)] max-w-3xl"
           >
             Real content for brands people <em className="italic">trust.</em>
           </motion.h1>
