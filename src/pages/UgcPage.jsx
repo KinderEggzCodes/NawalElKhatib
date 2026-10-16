@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import {
   ArrowRight, ArrowUpRight, Sparkles, Clapperboard, Camera,
   PackageOpen, MessageSquareHeart, Mic, Wand2, ShoppingBag,
-  BadgeCheck, Zap, HeartHandshake,
+  BadgeCheck, Zap, HeartHandshake, Play,
 } from 'lucide-react'
 
 const fadeUp = (delay = 0) => ({
@@ -32,6 +32,14 @@ const STEPS = [
   { n: '03', title: 'You post & convert', desc: 'You get polished, ready-to-post content with full usage rights. Then we watch it work.' },
 ]
 
+const PLACEHOLDER_WORK = [
+  { niche: 'Beauty',    title: 'More coming soon' },
+  { niche: 'Skincare',  title: 'More coming soon' },
+  { niche: 'Fashion',   title: 'More coming soon' },
+  { niche: 'Food',      title: 'More coming soon' },
+  { niche: 'Lifestyle', title: 'More coming soon' },
+]
+
 function Eyebrow({ children, light = false }) {
   return (
     <div className="flex items-center gap-3 mb-4">
@@ -52,6 +60,8 @@ export default function UgcPage() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   const workWithMe = () => navigate('/contact', { state: { from: '/ugc' } })
+  const scrollToWork = () =>
+    document.getElementById('ugc-work')?.scrollIntoView({ behavior: 'smooth' })
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
@@ -138,6 +148,13 @@ export default function UgcPage() {
               Work With Me
               <ArrowRight className="w-4 h-4" />
             </button>
+            <button
+              onClick={scrollToWork}
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/70 text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-stone-900 transition-colors"
+            >
+              <Play className="w-4 h-4" />
+              See My Work
+            </button>
           </motion.div>
         </div>
       </section>
@@ -200,44 +217,62 @@ export default function UgcPage() {
         </div>
       </section>
 
-      {/* ── Getting started (portfolio lives here once the first brand work lands) ── */}
-      <section className="py-20 sm:py-28 px-6 lg:px-10 bg-white/40">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div {...fadeUp(0)} className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-10 bg-stone-900" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-900">
-              Getting started
-            </span>
-            <div className="h-px w-10 bg-stone-900" />
+      {/* ── Portfolio ── */}
+      <section id="ugc-work" className="py-20 sm:py-28 px-6 lg:px-10 bg-white/40 scroll-mt-20">
+        <div className="max-w-7xl mx-auto">
+          <motion.div {...fadeUp(0)} className="text-center mb-4">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-px w-10 bg-stone-900" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-900">Portfolio</span>
+              <div className="h-px w-10 bg-stone-900" />
+            </div>
           </motion.div>
-          <motion.h2 {...fadeUp(0.06)} className="text-4xl sm:text-5xl font-black tracking-tight mb-6">
-            New here, <span className="gradient-text">not new to this.</span>
+          <motion.h2 {...fadeUp(0.06)} className="text-4xl sm:text-5xl font-black tracking-tight text-center mb-4">
+            My <span className="gradient-text">Work</span>
           </motion.h2>
-          <motion.div {...fadeUp(0.12)} className="space-y-4 text-stone-600 leading-relaxed">
-            <p>
-              I don't have a portfolio wall yet. This is where my first brand
-              collaborations will live, and I'm looking for the brands who
-              want in early.
-            </p>
-            <p>
-              What I bring instead: a marketer's brain, an authentic on-camera
-              style, and quick turnaround. You get a creator who's hungry to
-              prove herself, plus my signature three-hooks package with every
-              video.
-            </p>
-          </motion.div>
-          <motion.div {...fadeUp(0.18)} className="mt-10">
-            <button
-              onClick={workWithMe}
-              className="inline-flex items-center gap-2 bg-stone-900 text-white font-bold px-10 py-4 rounded-full hover:bg-black transition-colors"
+          <motion.p {...fadeUp(0.1)} className="text-center text-stone-600 max-w-md mx-auto mb-12">
+            Real content, shot and edited by me. More on the way.
+          </motion.p>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            <motion.div
+              {...fadeUp(0.05)}
+              className="group relative aspect-[9/16] rounded-2xl overflow-hidden bg-stone-900"
             >
-              Work With Me
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </motion.div>
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                src="/ugc-portfolio-ritz-carlton.mp4"
+                poster="/ugc-portfolio-ritz-carlton-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-12">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-white text-stone-900 px-3 py-1 rounded-full">
+                  Travel
+                </span>
+                <p className="text-white font-semibold text-sm mt-2 [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]">
+                  The Ritz-Carlton, Montreal
+                </p>
+              </div>
+            </motion.div>
+            {PLACEHOLDER_WORK.map(({ niche, title }, i) => (
+              <motion.div
+                key={i}
+                {...fadeUp(0.05 + (i + 1) * 0.05)}
+                className="group relative aspect-[9/16] rounded-2xl border-2 border-dashed border-stone-300 bg-stone-100/60 flex flex-col items-center justify-center gap-3 p-6 text-center hover:border-stone-500 transition-colors"
+              >
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-stone-900 text-white px-3 py-1 rounded-full">
+                  {niche}
+                </span>
+                <Clapperboard className="w-8 h-8 text-stone-400" />
+                <p className="text-sm font-semibold text-stone-500">{title}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
-
       {/* ── Services ── */}
       <section className="py-20 sm:py-28 px-6 lg:px-10">
         <div className="max-w-7xl mx-auto">
